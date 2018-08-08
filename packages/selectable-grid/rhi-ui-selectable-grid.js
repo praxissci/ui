@@ -130,7 +130,8 @@ export class RhiUiSelectableGrid extends GestureEventListeners(LitElement) {
         const range = [];
         const currentValue = this.selectedCell ? this.selectedCell.getAttribute('value') : null;
         this.cells.forEach((c) => {
-            if (RhiUiSelectableGrid.rectanglesIntersect(c.offsetTop, c.offsetLeft + c.offsetWidth, c.offsetTop + c.offsetHeight, c.offsetLeft, top, right, bottom, left)
+            const bounds = c.getBoundingClientRect();
+            if (RhiUiSelectableGrid.rectanglesIntersect(bounds.top, bounds.left + bounds.width, bounds.top + bounds.height, bounds.left, top, right, bottom, left)
                 && this.isValidForRange(c)) {
                 c.setAttribute('highlighted', 'true');
                 range.push(c);
