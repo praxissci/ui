@@ -8,11 +8,11 @@
     "@polymer/polymer": "^3.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.2"
   },
-  "description": "Grid that supports selection by dragging",
+  "description": "SVG Rick Hansen Institute logo",
   "homepage": "https://www.rickhanseninstitute.org",
   "license": "Apache-2.0",
-  "main": "rhi-ui-selectable-grid.js",
-  "name": "@rhi-ui/selectable-grid",
+  "main": "rhi-ui-logo.js",
+  "name": "@rhi-ui/logo",
   "private": false,
   "repository": {
     "type": "git",
@@ -21,5 +21,5 @@
   "scripts": {
     "prepublishOnly": "tsc -p ../../"
   },
-  "version": "1.0.1"
+  "version": "1.0.0"
 }

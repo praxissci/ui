@@ -20,12 +20,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <title>Demo :: rhi-ui-selectable-grid :: Rick Hansen Institute</title>
+    <title>Demo :: rhi-ui-logo :: Rick Hansen Institute</title>
     <script>
         // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
         // https://github.com/reactjs/redux/issues/2907
         window.process = { env: { NODE_ENV: 'production' } };
     </script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="../packages/selectable-grid/rhi-ui-selectable-grid-cell.js"></script>
+    <script type="module" src="../packages/logo/rhi-ui-logo.js"></script>
+    <script type="module" src="../packages/logo/rhi-ui-logo-small.js"></script>
     <style>
         body {
             font-family: 'Roboto', 'Noto', sans-serif;
@@ -33,13 +37,25 @@
             margin: 0;
             padding: 16px;
         }
+
+        rhi-ui-logo {
+            max-width: 512px;
+            margin-bottom: 48px;
+        }
+
+        rhi-ui-logo-small {
+            max-width: 512px;
+        }
     </style>
 </head>
 <body>
     <div class="main-content">
-        <h3>&lt;rhi-ui-isncsci&gt;</h3>
-        <div><a href="rhi-ui-logo.html">rhi-ui-logo</a></div>
-        <div><a href="rhi-ui-selectable-grid.html">rhi-ui-selectable-grid</a></div>
+        <h3>&lt;rhi-ui-logo&gt;</h3>
+        <div class="container">
+            <rhi-ui-logo></rhi-ui-logo>
+            <br/>
+            <rhi-ui-logo-small></rhi-ui-logo-small>
+        </div>
     </div>
     <script type="module">
         'use strict';
