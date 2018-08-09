@@ -27,8 +27,7 @@
         window.process = { env: { NODE_ENV: 'production' } };
     </script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script type="module" src="../packages/selectable-grid/rhi-ui-selectable-grid-cell.js"></script>
-    <script type="module" src="../packages/selectable-grid/rhi-ui-selectable-grid.js"></script>
+    <script type="module" src="../packages/selectable-grid/rhi-ui-selectable-grid-demo.js"></script>
     <style>
         body {
             font-family: 'Roboto', 'Noto', sans-serif;
@@ -36,42 +35,11 @@
             margin: 0;
             padding: 16px;
         }
-
-        /*html {
-            --nav-background-color: red;
-        }*/
-        
-        .row {
-            display: flex;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
     <div class="main-content">
-        <h3>&lt;rhi-ui-selectable-grid&gt;</h3>
-        <div class="container">
-            <rhi-ui-selectable-grid>
-                <div class="row">
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                </div>
-                <div class="row">
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                </div>
-                <div class="row">
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                    <rhi-ui-selectable-grid-cell></rhi-ui-selectable-grid-cell>
-                </div>
-            </rhi-ui-selectable-grid>
-        </div>
+        <rhi-ui-selectable-grid-demo></rhi-ui-selectable-grid-demo>
     </div>
     <script type="module">
         'use strict';
