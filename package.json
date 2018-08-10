@@ -3,6 +3,8 @@
     "dependencies": {
         "@polymer/lit-element": "^0.5.2",
         "@polymer/polymer": "^3.0.5",
+        "@rhi-ui/demo-snippet": "^1.0.0",
+        "@rhi-ui/markdown-viewer": "^1.0.0",
         "@webcomponents/webcomponentsjs": "^2.0.4"
     },
     "description": "",

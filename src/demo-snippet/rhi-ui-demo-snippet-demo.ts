@@ -17,44 +17,45 @@
 'use strict';
 
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
-import { TemplateResult } from 'lit-html/lit-html.js'
-import { RhiUiLogo } from './rhi-ui-logo.js';
-import { RhiUiDemoSnippet } from '../demo-snippet/rhi-ui-demo-snippet.js';
+import { TemplateResult } from 'lit-html/lit-html.js';
+import { RhiUiDemoSnippet } from './rhi-ui-demo-snippet.js';
 import { RhiUiMarkdownViewer } from '../markdown-viewer/rhi-ui-markdown-viewer.js';
-import { RhiUiLogoSmall } from './rhi-ui-logo-small.js';
 
-export class RhiUiLogoDemo extends LitElement {
-    public static get is(): string { return 'rhi-ui-logo-demo'; }
+export class RhiUiDemoSnippetDemo extends LitElement {
+    public static get is(): string { return 'rhi-ui-demo-snippet-demo'; }
 
-    public _render(props: any): TemplateResult {
+    public _render(props): TemplateResult {
         return html`
+            <!-- shadow DOM for your element -->
+            <!-- RHI Blue: #007DC2 -->
             <style>
                 :host {
                     display: block;
-                }
-
-                rhi-ui-demo-snippet:first-of-type {
-                    margin-bottom: 48px;
                 }
                 
                 rhi-ui-markdown-viewer {
                     margin: 0 16px 48px 16px;
                 }
             </style>
-            <h3 class="install-command">npm install --save @rhi-ui/logo</h3>
-            <h3>&lt;rhi-ui-logo&gt;</h3>
+            <h3>&lt;rhi-ui-demo-snippet&gt;</h3>
             <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
-            <rhi-ui-demo-snippet snippetTitle="Logo">
-                <rhi-ui-logo></rhi-ui-logo>
-            </rhi-ui-demo-snippet>
-            <rhi-ui-demo-snippet snippetTitle="Logo small">
-                <rhi-ui-logo-small></rhi-ui-logo-small>
+            <rhi-ui-demo-snippet snippetTitle="Default">
+                <style>
+                    .black-and-white {
+                        --snippet-title-color: #666;
+                        --snippet-title-background-color: #E2E2E2;
+                        --demo-snippet-code-background-color: #000;
+                        --demo-snippet-code-color: #FFF;
+                    }
+                </style>
+                <rhi-ui-demo-snippet class="black-and-white" snippetTitle="With H3">
+                    <h3>H3 in demo snippet</h3>
+                </rhi-ui-demo-snippet>
             </rhi-ui-demo-snippet>
         `;
     }
 
-    // Polymer
-    public static get properties(): object {
+    public static get properties(): any {
         return {
             readmeFile: String
         };
@@ -64,12 +65,11 @@ export class RhiUiLogoDemo extends LitElement {
         super();
     }
 
-    public ready(): void {
+    ready() {
         super.ready();
-
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
+        console.log(`Loaded ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
     }
 }
 
-customElements.define(RhiUiLogoDemo.is, RhiUiLogoDemo);
+customElements.define(RhiUiDemoSnippetDemo.is, RhiUiDemoSnippetDemo);

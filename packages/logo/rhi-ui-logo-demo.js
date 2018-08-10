@@ -17,6 +17,8 @@
 'use strict';
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
 import { RhiUiLogo } from './rhi-ui-logo.js';
+import { RhiUiDemoSnippet } from '../demo-snippet/rhi-ui-demo-snippet.js';
+import { RhiUiMarkdownViewer } from '../markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiLogoSmall } from './rhi-ui-logo-small.js';
 export class RhiUiLogoDemo extends LitElement {
     static get is() { return 'rhi-ui-logo-demo'; }
@@ -27,57 +29,30 @@ export class RhiUiLogoDemo extends LitElement {
                     display: block;
                 }
 
-                rhi-ui-logo {
-                    max-width: 512px;
+                rhi-ui-demo-snippet:first-of-type {
                     margin-bottom: 48px;
                 }
-
-                rhi-ui-logo-small {
-                    max-width: 96px;
-                }
-
-                .example {
-                    margin-bottom: 48px;
-                }
-
-                .example .description {
-                    margin: 16px 0;
-                }
-
-                .install-command {
-                    color: var(--install-command-color, #A30046);
-                }
-
-                .import {
-                    color: var(--install-command-color, #016184);
+                
+                rhi-ui-markdown-viewer {
+                    margin: 0 16px 48px 16px;
                 }
             </style>
             <h3 class="install-command">npm install --save @rhi-ui/logo</h3>
             <h3>&lt;rhi-ui-logo&gt;</h3>
-            <div class="example">
-                <div class="description">
-                    <p>You can import the custom element via JavaScript:</p>
-                    <p class="import">import { RhiUiLogo } from '@rhi-ui/logo/rhi-ui-logo.js';</p>
-                    <p>OR using a script tag:</p>
-                    <p class="import">&lt;script  type="module" src="node_modules/@rhi-ui/logo/rhi-ui-logo.js"&gt;&lt;/script&gt;</p>
-                </div>
+            <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
+            <rhi-ui-demo-snippet snippetTitle="Logo">
                 <rhi-ui-logo></rhi-ui-logo>
-            </div>
-            <h3>&lt;rhi-ui-logo-small&gt;</h3>
-            <div class="example">
-                <div class="description">
-                    <p>You can import the custom element via JavaScript:</p>
-                    <p class="import">import { RhiUiLogo } from '@rhi-ui/logo/rhi-ui-logo-small.js';</p>
-                    <p>OR using a script tag:</p>
-                    <p class="import">&lt;script  type="module" src="node_modules/@rhi-ui/logo/rhi-ui-logo-small.js"&gt;&lt;/script&gt;</p>
-                </div>
+            </rhi-ui-demo-snippet>
+            <rhi-ui-demo-snippet snippetTitle="Logo small">
                 <rhi-ui-logo-small></rhi-ui-logo-small>
-            </div>
+            </rhi-ui-demo-snippet>
         `;
     }
     // Polymer
     static get properties() {
-        return {};
+        return {
+            readmeFile: String
+        };
     }
     constructor() {
         super();
@@ -85,7 +60,8 @@ export class RhiUiLogoDemo extends LitElement {
     ready() {
         super.ready();
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is}`);
+        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
     }
 }
 customElements.define(RhiUiLogoDemo.is, RhiUiLogoDemo);
+//# sourceMappingURL=rhi-ui-logo-demo.js.map

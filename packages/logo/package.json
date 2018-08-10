@@ -9,6 +9,10 @@
     "@webcomponents/webcomponentsjs": "^2.0.2"
   },
   "description": "SVG Rick Hansen Institute logo",
+  "devDependencies": {
+      "@rhi-ui/rhi-ui-demo-snippet": "^1.0.0",
+      "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.0"
+  },
   "homepage": "https://www.rickhanseninstitute.org",
   "license": "Apache-2.0",
   "main": "rhi-ui-logo.js",

@@ -8,22 +8,21 @@
     "@polymer/polymer": "^3.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.2"
   },
-  "description": "Grid that supports selection by dragging",
+  "description": "Loads a markdown file and displays it.",
   "devDependencies": {
-      "@rhi-ui/rhi-ui-demo-snippet": "^1.0.0",
-      "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.0"
+      "@rhi-ui/demo-snippet": "^1.0.0"
   },
   "homepage": "https://www.rickhanseninstitute.org",
   "license": "Apache-2.0",
-  "main": "rhi-ui-selectable-grid.js",
-  "name": "@rhi-ui/selectable-grid",
+  "main": "rhi-ui-markdown-viewer.js",
+  "name": "@rhi-ui/markdown-viewer",
   "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rick-hansen-institute/ui.git"
   },
   "scripts": {
-    "prepublishOnly": "tsc -p ../../selectable-grid.tsconfig.json"
+    "prepublishOnly": "tsc -p ../../"
   },
-  "version": "1.0.2"
+  "version": "1.0.0"
 }

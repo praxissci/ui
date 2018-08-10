@@ -212,3 +212,4 @@ export class RhiUiSelectableGrid extends GestureEventListeners(LitElement) {
     }
 }
 customElements.define(RhiUiSelectableGrid.is, RhiUiSelectableGrid);
+//# sourceMappingURL=rhi-ui-selectable-grid.js.map

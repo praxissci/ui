@@ -16,6 +16,8 @@
 */
 'use strict';
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
+import { RhiUiDemoSnippet } from '@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js';
+import { RhiUiMarkdownViewer } from '@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiSelectableGrid } from './rhi-ui-selectable-grid.js';
 import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell.js';
 export class RhiUiSelectableGridDemo extends LitElement {
@@ -27,53 +29,22 @@ export class RhiUiSelectableGridDemo extends LitElement {
                     display: block;
                 }
 
+                rhi-ui-demo-snippet:first-of-type {
+                    margin-bottom: 48px;
+                }
+
+                rhi-ui-markdown-viewer {
+                    margin: 0 16px 48px 16px;
+                }
+
                 .row {
                     display: flex;
                     width: 100%;
                 }
-
-                .theme-wacky {
-                    --grid-background-color: black;
-                    --grid-color: white;
-                    --grid-highlight-background-color: green;
-                    --grid-highlight-color: orange;
-                    --grid-selected-border-color: red;
-                    --grid-special-background-color: blue;
-                }
-
-                .example {
-                    margin-bottom: 48px;
-                }
-
-                .example .description {
-                    margin: 16px 0;
-                }
-
-                .install-command {
-                    color: var(--install-command-color, #A30046);
-                }
-
-                .import {
-                    color: var(--install-command-color, #016184);
-                }
             </style>
             <h3>&lt;rhi-ui-selectable-grid&gt;</h3>
-            <div class="example">
-                <div class="description">
-                    <p>You can select a cell range using your mouse or finger.</p>
-                    <p>You can import the custom element via JavaScript:</p>
-                    <p class="import">
-                        import { RhiUiSelectableGrid } from '@rhi-ui/selectable-grid/rhi-ui-selectable-grid.js';
-                        <br/>
-                        import { RhiUiSelectableGrid } from '@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.js';
-                    </p>
-                    <p>OR using a script tag:</p>
-                    <p class="import">
-                        &lt;script  type="module" src="node_modules/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.js"&gt;&lt;/script&gt;
-                        <br/>
-                        &lt;script  type="module" src="node_modules/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.js"&gt;&lt;/script&gt;
-                    </p>
-                </div>
+            <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
+            <rhi-ui-demo-snippet snippetTitle="Default">
                 <rhi-ui-selectable-grid>
                     <div class="row">
                         <rhi-ui-selectable-grid-cell value="1" selected></rhi-ui-selectable-grid-cell>
@@ -94,20 +65,19 @@ export class RhiUiSelectableGridDemo extends LitElement {
                         <rhi-ui-selectable-grid-cell value="$"></rhi-ui-selectable-grid-cell>
                     </div>
                 </rhi-ui-selectable-grid>
-            </div>
-            <div class="example theme-wacky">
-                <div class="description">
-                    You can style the grid by targetting these variables:
-                    <ul>
-                        <li>--grid-background-color: black;</li>
-                        <li>--grid-color: white;</li>
-                        <li>--grid-highlight-background-color: green;</li>
-                        <li>--grid-highlight-color: orange;</li>
-                        <li>--grid-selected-border-color: red;</li>
-                        <li>--grid-special-background-color: blue;</li>
-                    </ul>
-                </div>
-                <rhi-ui-selectable-grid>
+            </rhi-ui-demo-snippet>
+            <rhi-ui-demo-snippet snippetTitle="Styled">
+                <style>
+                    .theme-wacky {
+                        --grid-background-color: black;
+                        --grid-color: white;
+                        --grid-highlight-background-color: green;
+                        --grid-highlight-color: orange;
+                        --grid-selected-border-color: red;
+                        --grid-special-background-color: blue;
+                    }
+                </style>
+                <rhi-ui-selectable-grid class="theme-wacky">
                     <div class="row">
                         <rhi-ui-selectable-grid-cell value="1" selected></rhi-ui-selectable-grid-cell>
                         <rhi-ui-selectable-grid-cell value="2" special></rhi-ui-selectable-grid-cell>
@@ -127,12 +97,14 @@ export class RhiUiSelectableGridDemo extends LitElement {
                         <rhi-ui-selectable-grid-cell value="$"></rhi-ui-selectable-grid-cell>
                     </div>
                 </rhi-ui-selectable-grid>
-            </div>
+            </rhi-ui-demo-snippet>
         `;
     }
     // Polymer
     static get properties() {
-        return {};
+        return {
+            readmeFile: String
+        };
     }
     constructor() {
         super();
@@ -140,7 +112,8 @@ export class RhiUiSelectableGridDemo extends LitElement {
     ready() {
         super.ready();
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiSelectableGrid.is} and ${RhiUiSelectableGridCell.is}`);
+        console.log(`Loaded ${RhiUiSelectableGrid.is} and ${RhiUiSelectableGridCell.is} and ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
     }
 }
 customElements.define(RhiUiSelectableGridDemo.is, RhiUiSelectableGridDemo);
+//# sourceMappingURL=rhi-ui-selectable-grid-demo.js.map

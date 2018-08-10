@@ -47,3 +47,4 @@ export class RhiUiLogo extends LitElement {
     }
 }
 customElements.define(RhiUiLogo.is, RhiUiLogo);
+//# sourceMappingURL=rhi-ui-logo.js.map
