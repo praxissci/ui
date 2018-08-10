@@ -18,9 +18,9 @@
 
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
 import { TemplateResult } from 'lit-html/lit-html.js'
+import { RhiUiDemoSnippet } from '@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js';
+import { RhiUiMarkdownViewer } from '@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiLogo } from './rhi-ui-logo.js';
-import { RhiUiDemoSnippet } from '../demo-snippet/rhi-ui-demo-snippet.js';
-import { RhiUiMarkdownViewer } from '../markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiLogoSmall } from './rhi-ui-logo-small.js';
 
 export class RhiUiLogoDemo extends LitElement {

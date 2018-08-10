@@ -18,8 +18,8 @@
 
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
 import { TemplateResult } from 'lit-html/lit-html.js';
+import { RhiUiMarkdownViewer } from '@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiDemoSnippet } from './rhi-ui-demo-snippet.js';
-import { RhiUiMarkdownViewer } from '../markdown-viewer/rhi-ui-markdown-viewer.js';
 
 export class RhiUiDemoSnippetDemo extends LitElement {
     public static get is(): string { return 'rhi-ui-demo-snippet-demo'; }

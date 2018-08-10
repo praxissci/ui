@@ -10,8 +10,8 @@
   },
   "description": "SVG Rick Hansen Institute logo",
   "devDependencies": {
-      "@rhi-ui/rhi-ui-demo-snippet": "^1.0.0",
-      "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.0"
+      "@rhi-ui/rhi-ui-demo-snippet": "^1.0.1",
+      "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.1"
   },
   "homepage": "https://www.rickhanseninstitute.org",
   "license": "Apache-2.0",
@@ -25,5 +25,5 @@
   "scripts": {
     "prepublishOnly": "tsc -p ../../"
   },
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
