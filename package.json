@@ -9,6 +9,7 @@
     },
     "description": "",
     "devDependencies": {
+        "@polymer/iron-demo-helpers": "^3.0.0-pre.21",
         "typescript": "^3.0.1"
     },
     "homepage": "https://www.rickhanseninstitute.org/rhi-isncsci/",

@@ -13,7 +13,7 @@
         "noImplicitAny": false,
         "outDir": "./packages",
         "removeComments": false,
-        "sourceMap": true,
+        "sourceMap": false,
         "target": "es6"
     },
     "include": [

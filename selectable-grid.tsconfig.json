@@ -13,7 +13,7 @@
         "noImplicitAny": false,
         "outDir": "./packages/selectable-grid",
         "removeComments": false,
-        "sourceMap": true,
+        "sourceMap": false,
         "target": "es6"
     },
     "files": [
