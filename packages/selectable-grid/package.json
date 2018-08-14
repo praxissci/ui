@@ -15,6 +15,15 @@
         "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.0"
     },
     "homepage": "https://www.rickhanseninstitute.org",
+    "keywords": [
+        "Rick",
+        "Hansen",
+        "Institute",
+        "custom elements",
+        "components",
+        "grid",
+        "selectable"
+    ],
     "license": "Apache-2.0",
     "main": "rhi-ui-selectable-grid.js",
     "name": "@rhi-ui/selectable-grid",
