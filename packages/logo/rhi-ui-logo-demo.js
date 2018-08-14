@@ -16,7 +16,6 @@
 */
 'use strict';
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
-import { RhiUiMarkdownViewer } from '@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiLogo } from './rhi-ui-logo.js';
 import { RhiUiLogoSmall } from './rhi-ui-logo-small.js';
 export class RhiUiLogoDemo extends LitElement {
@@ -28,12 +27,6 @@ export class RhiUiLogoDemo extends LitElement {
                     display: block;
                 }
 
-                .title {
-                    background-color: var(--snippet-title-background-color, #007DC2);
-                    color: var(--snippet-title-color, #FFF);
-                    padding: 16px;
-                }
-
                 .example h4 {
                     background-color: var(--snippet-title-background-color, #8baec1);
                     color: var(--snippet-title-color, #003a59);
@@ -43,10 +36,15 @@ export class RhiUiLogoDemo extends LitElement {
                 rhi-ui-markdown-viewer {
                     margin: 0 16px 48px 16px;
                 }
+
+                marked-element {
+                    margin-bottom: 48px;
+                }
             </style>
-            <h3 class="title">&lt;rhi-ui-logo&gt;</h3>
-            <h3 class="install-command">npm install --save @rhi-ui/logo</h3>
-            <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
+            <marked-element>
+                <div slot="markdown-html"></div>
+                <script id="marked-element" type="text/markdown"></script>
+            </marked-element>
             <div class="example">
                 <h4>Logo</h4>
                 <demo-snippet>
@@ -77,7 +75,8 @@ export class RhiUiLogoDemo extends LitElement {
     ready() {
         super.ready();
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiMarkdownViewer.is}`);
+        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is}`);
+        this.shadowRoot.getElementById('marked-element').setAttribute('src', this['readmeFile']);
     }
 }
 customElements.define(RhiUiLogoDemo.is, RhiUiLogoDemo);

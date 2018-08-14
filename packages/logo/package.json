@@ -11,9 +11,19 @@
     "description": "SVG Rick Hansen Institute logo",
     "devDependencies": {
         "@polymer/iron-demo-helpers": "^3.0.0-pre.21",
+        "@polymer/marked-element": "^3.0.0-pre.21",
         "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.1"
     },
     "homepage": "https://www.rickhanseninstitute.org",
+    "keywords": [
+        "Rick",
+        "Hansen",
+        "Institute",
+        "Logo",
+        "custom elements",
+        "components",
+        "svg"
+    ],
     "license": "Apache-2.0",
     "main": "rhi-ui-logo.js",
     "name": "@rhi-ui/logo",
@@ -25,5 +35,5 @@
     "scripts": {
         "prepublishOnly": "tsc -p ../../"
     },
-    "version": "1.0.2"
+    "version": "1.0.4"
 }

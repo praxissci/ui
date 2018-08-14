@@ -2,6 +2,7 @@
     "author": "RhiTech <tech@rickhanseninstitute.org>",
     "dependencies": {
         "@polymer/lit-element": "^0.5.2",
+        "@polymer/marked-element": "^3.0.0-pre.21",
         "@polymer/polymer": "^3.0.5",
         "@rhi-ui/demo-snippet": "^1.0.1",
         "@rhi-ui/markdown-viewer": "^1.0.1",

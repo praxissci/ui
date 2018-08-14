@@ -11,13 +11,13 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./packages",
+        "outDir": "./packages/logo",
         "removeComments": false,
         "sourceMap": false,
         "target": "es6"
     },
     "include": [
-        "./src/**/*"
+        "./src/logo/**/*"
     ],
     "exclude": [
         "./node_modules",
