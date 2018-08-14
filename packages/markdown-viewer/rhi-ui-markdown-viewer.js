@@ -60,4 +60,3 @@ export class RhiUiMarkdownViewer extends LitElement {
     }
 }
 customElements.define(RhiUiMarkdownViewer.is, RhiUiMarkdownViewer);
-//# sourceMappingURL=rhi-ui-markdown-viewer.js.map

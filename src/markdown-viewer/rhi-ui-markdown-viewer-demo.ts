@@ -18,7 +18,6 @@
 
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
 import { TemplateResult } from 'lit-html/lit-html.js';
-import { RhiUiDemoSnippet } from '@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js';
 import { RhiUiMarkdownViewer } from './rhi-ui-markdown-viewer.js';
 
 export class RhiUiMarkdownViewerDemo extends LitElement {
@@ -32,16 +31,34 @@ export class RhiUiMarkdownViewerDemo extends LitElement {
                 :host {
                     display: block;
                 }
+
+                .title {
+                    background-color: var(--snippet-title-background-color, #007DC2);
+                    color: var(--snippet-title-color, #FFF);
+                    padding: 16px;
+                }
+
+                .example h4 {
+                    background-color: var(--snippet-title-background-color, #8baec1);
+                    color: var(--snippet-title-color, #003a59);
+                    padding: 12px 16px;
+                }
                 
                 .readme {
                     margin: 0 16px 48px 16px;
                 }
             </style>
-            <h3>&lt;rhi-ui-markdown-viewer&gt;</h3>
+            <h3 class="title">&lt;rhi-ui-markdown-viewer&gt;</h3>
             <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
-            <rhi-ui-demo-snippet snippetTitle="${props.readmeFile}">
-                <rhi-ui-markdown-viewer fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
-            </rhi-ui-demo-snippet>
+            <div class="example">
+                <h4>Example</h4>
+                <demo-snippet>
+                    <template>
+                        <rhi-ui-markdown-viewer
+                            fileUri="https://raw.githubusercontent.com/rick-hansen-institute/ui/master/packages/logo/README.md"></rhi-ui-markdown-viewer>
+                    </template>
+                </demo-snippet>
+            </div>
         `;
     }
 
@@ -58,7 +75,7 @@ export class RhiUiMarkdownViewerDemo extends LitElement {
     ready() {
         super.ready();
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiMarkdownViewer.is} and ${RhiUiDemoSnippet.is}`);
+        console.log(`Loaded ${RhiUiMarkdownViewer.is}`);
     }
 }
 
