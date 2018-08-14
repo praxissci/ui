@@ -100,4 +100,3 @@ export class RhiUiSelectableGridCell extends LitElement {
     }
 }
 customElements.define(RhiUiSelectableGridCell.is, RhiUiSelectableGridCell);
-//# sourceMappingURL=rhi-ui-selectable-grid-cell.js.map

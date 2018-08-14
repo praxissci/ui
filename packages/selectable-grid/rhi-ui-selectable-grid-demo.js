@@ -16,7 +16,6 @@
 */
 'use strict';
 import { html, LitElement } from '@polymer/lit-element/lit-element.js';
-import { RhiUiMarkdownViewer } from '@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiSelectableGrid } from './rhi-ui-selectable-grid.js';
 import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell.js';
 export class RhiUiSelectableGridDemo extends LitElement {
@@ -36,12 +35,6 @@ export class RhiUiSelectableGridDemo extends LitElement {
                     margin: 0 16px 48px 16px;
                 }
 
-                .title {
-                    background-color: var(--snippet-title-background-color, #007DC2);
-                    color: var(--snippet-title-color, #FFF);
-                    padding: 16px;
-                }
-
                 .row {
                     display: flex;
                     width: 100%;
@@ -53,8 +46,10 @@ export class RhiUiSelectableGridDemo extends LitElement {
                     padding: 12px 16px;
                 }
             </style>
-            <h3 class="title">&lt;rhi-ui-selectable-grid&gt;</h3>
-            <rhi-ui-markdown-viewer class="readme" fileUri="${props.readmeFile}"></rhi-ui-markdown-viewer>
+            <marked-element>
+                <div slot="markdown-html"></div>
+                <script id="marked-element" type="text/markdown"></script>
+            </marked-element>
             <div class="example">
                 <h4>Default</h4>
                 <demo-snippet>
@@ -133,8 +128,8 @@ export class RhiUiSelectableGridDemo extends LitElement {
     ready() {
         super.ready();
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiSelectableGrid.is} and ${RhiUiSelectableGridCell.is} and ${RhiUiMarkdownViewer.is}`);
+        console.log(`Loaded ${RhiUiSelectableGrid.is} and ${RhiUiSelectableGridCell.is}`);
+        this.shadowRoot.getElementById('marked-element').setAttribute('src', this['readmeFile']);
     }
 }
 customElements.define(RhiUiSelectableGridDemo.is, RhiUiSelectableGridDemo);
-//# sourceMappingURL=rhi-ui-selectable-grid-demo.js.map
