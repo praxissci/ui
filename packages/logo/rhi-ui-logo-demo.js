@@ -32,10 +32,6 @@ export class RhiUiLogoDemo extends LitElement {
                     color: var(--snippet-title-color, #003a59);
                     padding: 12px 16px;
                 }
-                
-                rhi-ui-markdown-viewer {
-                    margin: 0 16px 48px 16px;
-                }
 
                 marked-element {
                     margin-bottom: 48px;
@@ -52,8 +48,8 @@ export class RhiUiLogoDemo extends LitElement {
                         <rhi-ui-logo></rhi-ui-logo>
                     </template>
                 </demo-snippet>
-            <div class="example">
             </div>
+            <div class="example">
                 <h4>Small</h4>
                 <demo-snippet>
                     <template>

@@ -27,14 +27,6 @@ export class RhiUiSelectableGridDemo extends LitElement {
                     display: block;
                 }
 
-                rhi-ui-demo-snippet:first-of-type {
-                    margin-bottom: 48px;
-                }
-
-                rhi-ui-markdown-viewer {
-                    margin: 0 16px 48px 16px;
-                }
-
                 .row {
                     display: flex;
                     width: 100%;

@@ -65,6 +65,7 @@ The `rhi-ui-selectable-grid-demo.js` file references the *Polymer* elements `<ma
 <head>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../node_modules/@polymer/marked-element/marked-element.js"></script>
     <script type="module" src="../packages/selectable-grid/rhi-ui-selectable-grid-demo.js"></script>
 </head>
 <body>

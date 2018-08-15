@@ -11,8 +11,7 @@
     "description": "Grid that supports selection by dragging",
     "devDependencies": {
         "@polymer/iron-demo-helpers": "^3.0.0-pre.21",
-        "@polymer/marked-element": "^3.0.0-pre.21",
-        "@rhi-ui/rhi-ui-markdown-viewer": "^1.0.0"
+        "@polymer/marked-element": "^3.0.0-pre.21"
     },
     "homepage": "https://www.rickhanseninstitute.org",
     "keywords": [
