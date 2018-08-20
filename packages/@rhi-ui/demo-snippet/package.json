@@ -10,7 +10,7 @@
   "dependencies": {},
   "description": "Element to demo custom elements",
   "devDependencies": {
-    "@rhi-ui/markdown-viewer": "^1.0.2",
+    "@rhi-ui/markdown-viewer": "^1.0.3",
     "markdown-it": "^8.4.2"
   },
   "homepage": "https://www.rickhanseninstitute.org",
@@ -23,7 +23,7 @@
     "url": "git+https://github.com/rick-hansen-institute/ui.git"
   },
   "scripts": {
-    "prepublishOnly": "tsc -p ../../tsconfig.demo-snippet.json"
+    "prepublishOnly": "tsc -p ../../../"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

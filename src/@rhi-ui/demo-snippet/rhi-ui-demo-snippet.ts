@@ -34,7 +34,7 @@ export class RhiUiDemoSnippet extends HTMLElement {
 
                 #title {
                     color: var(--snippet-title-color, #FFF);
-                    background-color: var(--snippet-title-background-color, #73007A);
+                    background-color: var(--snippet-title-background-color, #0072CE);
                     font-size: 18px;
                     padding: 16px;
                 }

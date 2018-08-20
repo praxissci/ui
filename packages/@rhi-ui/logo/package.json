@@ -10,8 +10,9 @@
     },
     "description": "SVG Rick Hansen Institute logo",
     "devDependencies": {
-        "@polymer/iron-demo-helpers": "^3.0.0-pre.21",
-        "@polymer/marked-element": "^3.0.0-pre.21"
+        "@rhi-ui/demo-snippet": "^1.0.3",
+        "@rhi-ui/markdown-viewer": "^1.0.3",
+        "markdown-it": "^8.4.2"
     },
     "homepage": "https://www.rickhanseninstitute.org",
     "keywords": [
@@ -32,7 +33,7 @@
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
     "scripts": {
-        "prepublishOnly": "tsc -p ../../"
+        "prepublishOnly": "tsc -p ../../../"
     },
-    "version": "1.0.4"
+    "version": "1.0.5"
 }
