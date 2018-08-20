@@ -11,17 +11,16 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./packages/@rhi-ui",
+        "outDir": "./packages/@rhi-ui/demo-snippet",
         "removeComments": false,
         "sourceMap": false,
         "target": "es6"
     },
     "include": [
-        "./src/@rhi-ui/**/*"
+        "./src/@rhi-ui/demo-snippet/**/*"
     ],
     "exclude": [
         "./node_modules",
-        "**/*.spec.ts",
-        "./src/selectable-grid/**/*"
+        "**/*.spec.ts"
     ]
 }

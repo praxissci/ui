@@ -11,17 +11,16 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./packages/@rhi-ui",
+        "outDir": "./packages/@rhi-ui/markdown-viewer",
         "removeComments": false,
         "sourceMap": false,
         "target": "es6"
     },
     "include": [
-        "./src/@rhi-ui/**/*"
+        "./src/@rhi-ui/markdown-viewer/**/*"
     ],
     "exclude": [
         "./node_modules",
-        "**/*.spec.ts",
-        "./src/selectable-grid/**/*"
+        "**/*.spec.ts"
     ]
 }
