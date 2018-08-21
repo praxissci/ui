@@ -4,11 +4,15 @@
         "@polymer/lit-element": "^0.5.2",
         "@polymer/marked-element": "^3.0.0-pre.21",
         "@polymer/polymer": "^3.0.5",
-        "@webcomponents/webcomponentsjs": "^2.0.4"
+        "@rhi-ui/demo-snippet": "^1.0.2",
+        "@rhi-ui/markdown-viewer": "^1.0.2",
+        "@webcomponents/webcomponentsjs": "^2.0.4",
+        "markdown-it": "^8.4.2"
     },
     "description": "",
     "devDependencies": {
         "@polymer/iron-demo-helpers": "^3.0.0-pre.21",
+        "express": "^4.16.3",
         "typescript": "^3.0.1"
     },
     "homepage": "https://www.rickhanseninstitute.org/rhi-isncsci/",
@@ -20,5 +24,5 @@
         "tsc": "tsc --watch",
         "start": "node server.js"
     },
-    "version": "0.0.1"
+    "version": "0.0.2"
 }
