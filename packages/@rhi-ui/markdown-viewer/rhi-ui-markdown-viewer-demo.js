@@ -42,7 +42,7 @@ export class RhiUiMarkdownViewerDemo extends HTMLElement {
             </style>
             <rhi-ui-markdown-viewer id="readme-viewer" class="readme"></rhi-ui-markdown-viewer>
             <rhi-ui-demo-snippet snippet-title="Default">
-                <rhi-ui-markdown-viewer id="markdwon-viewer"></rhi-ui-markdown-viewer>
+                <rhi-ui-markdown-viewer id="markdown-viewer"></rhi-ui-markdown-viewer>
             </rhi-ui-demo-snippet>
         `;
     }
@@ -56,7 +56,7 @@ export class RhiUiMarkdownViewerDemo extends HTMLElement {
     }
     static get observedAttributes() {
         const attributes = [];
-        for (let key in RhiUiMarkdownViewer.properties) {
+        for (let key in RhiUiMarkdownViewerDemo.properties) {
             attributes.push(key.toLowerCase());
         }
         return attributes;
@@ -75,7 +75,7 @@ export class RhiUiMarkdownViewerDemo extends HTMLElement {
         this.props[name] = newValue;
         if (name === 'file-uri' && newValue) {
             const readmeViewer = this.shadowRoot.getElementById('readme-viewer');
-            const markdownViewer = this.shadowRoot.getElementById('markdwon-viewer');
+            const markdownViewer = this.shadowRoot.getElementById('markdown-viewer');
             if (readmeViewer) {
                 readmeViewer.setAttribute('file-uri', newValue);
                 markdownViewer.setAttribute('file-uri', newValue);

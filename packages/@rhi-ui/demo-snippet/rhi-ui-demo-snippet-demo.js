@@ -15,7 +15,7 @@
  * limitations under the License.
 */
 'use strict';
-import { RhiUiMarkdownViewer } from '../../@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
+import { RhiUiMarkdownViewer } from '../../../node_modules/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
 import { RhiUiDemoSnippet } from './rhi-ui-demo-snippet.js';
 export class RhiUiDemoSnippetDemo extends HTMLElement {
     constructor() {
@@ -66,7 +66,7 @@ export class RhiUiDemoSnippetDemo extends HTMLElement {
     }
     static get observedAttributes() {
         const attributes = [];
-        for (let key in RhiUiMarkdownViewer.properties) {
+        for (let key in RhiUiDemoSnippetDemo.properties) {
             attributes.push(key.toLowerCase());
         }
         return attributes;

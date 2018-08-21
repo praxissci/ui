@@ -1,13 +1,13 @@
 /**
  * @license
  * Copyright (c) 2018 Rick Hansen Institute. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,18 +15,24 @@
  * limitations under the License.
 */
 'use strict';
-
-import { html, LitElement } from '@polymer/lit-element/lit-element.js';
-import { TemplateResult } from 'lit-html/lit-html.js'
-import { GestureEventListeners } from '@polymer/polymer/lib/mixins/gesture-event-listeners.js';
-import * as Gestures from '@polymer/polymer/lib/utils/gestures.js';
+import { GestureEventListeners } from '../../../node_modules/@polymer/polymer/lib/mixins/gesture-event-listeners.js';
+import * as Gestures from '../../../node_modules/@polymer/polymer/lib/utils/gestures.js';
 import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell.js';
-
-export class RhiUiSelectableGrid extends GestureEventListeners(LitElement) {
-    public static get is(): string { return 'rhi-ui-selectable-grid'; }
-
-    public _render(props: any): TemplateResult {
-        return html`
+export class RhiUiSelectableGrid extends GestureEventListeners(HTMLElement) {
+    constructor() {
+        super();
+        this.props = {};
+        // I don't like using any, but that is what
+        this.currentTrackSource = null;
+        this.selectionRange = [];
+        this.attachShadow({ mode: 'open' });
+        // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
+        console.log(`${RhiUiSelectableGrid.is}, ${RhiUiSelectableGridCell.is}`);
+        this.requestRender();
+    }
+    static get is() { return 'rhi-ui-selectable-grid'; }
+    getTemplate(props) {
+        return `
             <style>
                 :host {
                     display: block;
@@ -52,216 +58,171 @@ export class RhiUiSelectableGrid extends GestureEventListeners(LitElement) {
             <slot></slot>
         `;
     }
-
-    // Polymer
-    public static get properties(): object {
+    static get properties() {
         return {
-            previewSelectedValueOnRange: Boolean
+            'preview-selected-value-on-range': {
+                type: Boolean,
+                value: false
+            }
         };
     }
-
-    private selectedCell: HTMLElement;
-
-    // I don't like using any, but that is what
-    private currentTrackSource: any = null;
-    private selectionRange: HTMLElement[] = [];
-
-    private cells: HTMLElement[];
-
-    public constructor() {
-        super();
+    static get observedAttributes() {
+        const attributes = [];
+        for (let key in RhiUiSelectableGrid.properties) {
+            attributes.push(key.toLowerCase());
+        }
+        return attributes;
     }
-
-    // Polymer
-    public ready(): void {
-        super.ready();
-
+    connectedCallback() {
         // if the element has children, it means rows were added to the <slot> element.
         // Other wise we asume the object was extended and the rows were added directly to the element's template instead of <slot>.
-        const rootElement: HTMLElement = this.getRootElement();
+        const rootElement = this.getRootElement();
         this.initializeCells(rootElement.children);
-
         Gestures.addListener(rootElement, 'track', this.trackHandler.bind(this));
         Gestures.addListener(rootElement, 'down', this.downHandler.bind(this));
         Gestures.addListener(rootElement, 'up', this.upHandler.bind(this));
     }
-
-    // Polymer
-    public disconnectedCallback(): void {
-        super.disconnectedCallback();
-
-        const rootElement: any = this.getRootElement();
+    disconnectedCallback() {
+        const rootElement = this.getRootElement();
         Gestures.removeListener(rootElement, 'track', this.trackHandler.bind(this));
         Gestures.removeListener(rootElement, 'down', this.downHandler.bind(this));
         Gestures.removeListener(rootElement, 'up', this.upHandler.bind(this));
     }
-
-    private getRootElement(): any {
+    requestRender() {
+        const template = document.createElement('template');
+        template.innerHTML = this.getTemplate({});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+    getRootElement() {
         return this['children'].length > 0 ? this : this['shadowRoot'];
     }
-
-    private initializeCells(rows: HTMLCollection): void {
+    initializeCells(rows) {
         this.cells = [];
-
-        for (let r: number = 0; r < rows.length; r++) {
-            const row: HTMLElement = <HTMLElement>rows.item(r);
-
-            row.children
-
+        for (let r = 0; r < rows.length; r++) {
+            const row = rows.item(r);
+            row.children;
             if (!row.classList || !row.classList.contains('row')) {
                 continue;
             }
-
-            for (let c: number = 0; c < row.children.length; c++) {
+            for (let c = 0; c < row.children.length; c++) {
                 if (row.children[c].tagName.toUpperCase() === 'RHI-UI-SELECTABLE-GRID-CELL')
-                    this.cells.push(<HTMLElement>row.children.item(c));
+                    this.cells.push(row.children.item(c));
             }
         }
     }
-
-    public selectCell(name: string) {
+    selectCell(name) {
         if (this.selectedCell) {
             this.selectedCell['selected'] = false;
             this.selectedCell = null;
         }
-
-        this.selectedCell = this.cells.find((c: HTMLElement) => c.getAttribute('name') === name);
-
+        this.selectedCell = this.cells.find((c) => c.getAttribute('name') === name);
         if (this.selectedCell) {
             this.selectedCell['selected'] = true;
         }
     }
-
-    public getCellValue(name: string): string {
-        const cell: HTMLElement = this.cells.find((c: HTMLElement) => c.getAttribute('name') === name);
+    getCellValue(name) {
+        const cell = this.cells.find((c) => c.getAttribute('name') === name);
         return cell ? cell.getAttribute('value') : '';
     }
-
-    public clearSelectionRange(): void {
-        this.cells.forEach((c: HTMLElement) => {
+    clearSelectionRange() {
+        this.cells.forEach((c) => {
             c.removeAttribute('highlighted');
             c.removeAttribute('preview');
         });
-
         this.selectionRange = [];
     }
-
-    private static rectanglesIntersect(r1Top: number, r1Right: number, r1Bottom: number, r1Left: number, r2Top: number, r2Right: number, r2Bottom: number, r2Left: number): boolean {
+    static rectanglesIntersect(r1Top, r1Right, r1Bottom, r1Left, r2Top, r2Right, r2Bottom, r2Left) {
         return !(r2Left > r1Right ||
             r2Right < r1Left ||
             r2Top > r1Bottom ||
             r2Bottom < r1Top);
     }
-
-    private isValidForRange(cell: HTMLElement): boolean {
+    isValidForRange(cell) {
         return true;
     }
-
-    private updateRange(top: number, right: number, bottom: number, left: number): void {
-        const range: HTMLElement[] = [];
-        const currentValue: string = this.selectedCell ? this.selectedCell.getAttribute('value') : null;
-
-        this.cells.forEach((c: HTMLElement) => {
+    updateRange(top, right, bottom, left) {
+        const range = [];
+        const currentValue = this.selectedCell ? this.selectedCell.getAttribute('value') : null;
+        this.cells.forEach((c) => {
             const bounds = c.getBoundingClientRect();
-
-            if (
-                RhiUiSelectableGrid.rectanglesIntersect(bounds.top, bounds.left + bounds.width, bounds.top + bounds.height, bounds.left, top, right, bottom, left)
-                && this.isValidForRange(c)
-            ) {
-                c.setAttribute('highlighted', 'true');
+            if (RhiUiSelectableGrid.rectanglesIntersect(bounds.top, bounds.left + bounds.width, bounds.top + bounds.height, bounds.left, top, right, bottom, left)
+                && this.isValidForRange(c)) {
+                c.setAttributeNode(document.createAttribute('highlighted'));
                 range.push(c);
-
-                if (this['previewSelectedValueOnRange'] && currentValue) {
+                if (this['preview-selected-value-on-range'] && currentValue) {
                     c.setAttribute('preview', currentValue);
                 }
-            } else {
+            }
+            else {
                 c.removeAttribute('highlighted');
                 c.removeAttribute('preview');
             }
         });
-
         this.selectionRange = range;
     }
-
-    private trackHandler(e): void {
-        const t: any = e.detail.hover();
-
+    trackHandler(e) {
+        const t = e.detail.hover();
         // We can get a null target when moving outside the document, possible when in a frame.
         if (!t) {
             return;
         }
-
         // Don't check when rolling over the same element, just when we move on top of a different cell
         if (this.currentTrackSource
             && this.currentTrackSource.offsetLeft === t.offsetLeft
             && this.currentTrackSource.offsetTop === t.offsetTop) {
             return;
         }
-
         this.currentTrackSource = t;
-
-        let left: number;
-        let right: number;
-        let top: number;
-        let bottom: number;
-
+        let left;
+        let right;
+        let top;
+        let bottom;
         // Remember that the detail returns the coordinates based on the screen.
         // To tell where we are on the actual page we need to add the distance scrolled.
         if (e.detail.dx > 0) {
-            left = e.detail.x + window.pageXOffset - e.detail.dx;
-            right = e.detail.x + window.pageXOffset;
-        } else {
-            left = e.detail.x + window.pageXOffset;
-            right = e.detail.x + window.pageXOffset - e.detail.dx;
+            left = e.detail.x /* + window.pageXOffset*/ - e.detail.dx;
+            right = e.detail.x /* + window.pageXOffset*/;
         }
-
+        else {
+            left = e.detail.x /* + window.pageXOffset*/;
+            right = e.detail.x /* + window.pageXOffset*/ - e.detail.dx;
+        }
         if (e.detail.dy > 0) {
-            top = e.detail.y + window.pageYOffset - e.detail.dy;
-            bottom = e.detail.y + window.pageYOffset;
-        } else {
-            top = e.detail.y + window.pageYOffset;
-            bottom = e.detail.y + window.pageYOffset - e.detail.dy;
+            top = e.detail.y /* + window.pageYOffset*/ - e.detail.dy;
+            bottom = e.detail.y /* + window.pageYOffset*/;
         }
-
+        else {
+            top = e.detail.y /* + window.pageYOffset*/;
+            bottom = e.detail.y /* + window.pageYOffset*/ - e.detail.dy;
+        }
         this.updateRange(top, right, bottom, left);
     }
-
-    private getCellFromElementPath(element: any): HTMLElement {
+    getCellFromElementPath(element) {
         let currentElement = element;
-        let cell: HTMLElement = null;
-
+        let cell = null;
         while (currentElement && !cell) {
             if (currentElement.tagName && currentElement.tagName.toLowerCase() === RhiUiSelectableGridCell.is) {
                 cell = currentElement;
             }
-
             currentElement = currentElement.parentNode;
         }
-
         return cell;
     }
-
-    private downHandler(e: any): void {
-        const cell: HTMLElement = this.getCellFromElementPath(e.target);
-
+    downHandler(e) {
+        const cell = this.getCellFromElementPath(e.target);
         if (!cell) {
             return;
         }
-
-        const event: CustomEvent = new CustomEvent('cell-down', { detail: { name: cell.getAttribute('name') } });
+        const event = new CustomEvent('cell-down', { detail: { name: cell.getAttribute('name') } });
         this['dispatchEvent'](event);
     }
-
-    private upHandler(e): void {
-        const cell: HTMLElement = this.getCellFromElementPath(e.target);
-
+    upHandler(e) {
+        const cell = this.getCellFromElementPath(e.target);
         if (!cell) {
             return;
         }
-
-        const event: CustomEvent = new CustomEvent('cell-up', { detail: { name: cell.getAttribute('name') } });
+        const event = new CustomEvent('cell-up', { detail: { name: cell.getAttribute('name') } });
         this['dispatchEvent'](event);
     }
 }
-
 customElements.define(RhiUiSelectableGrid.is, RhiUiSelectableGrid);

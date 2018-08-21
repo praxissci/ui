@@ -16,37 +16,34 @@
 */
 'use strict';
 
-import { html, LitElement } from '@polymer/lit-element';
-import { TemplateResult } from 'lit-html';
-
-export class RhiUiSelectableGridCell extends LitElement {    
+export class RhiUiSelectableGridCell extends HTMLElement {    
     public static get is(): string { return 'rhi-ui-selectable-grid-cell'; }
     public static get observedAttributes(): string[] {
         return ['value', 'preview'];
     }
 
-    public _render(props: any): TemplateResult {
-        return html`
+    public getTemplate(props: any): string {
+        return `
             <style>
                 :host {
                     display: block;
                 }
 
-                :host([selected]) .cell {
+                :host([selected]) #cell {
                     border-color: var(--grid-selected-border-color, #666);
                 }
 
-                :host([special]) .cell {
+                :host([special]) #cell {
                     background-color: var(--grid-special-background-color, #FFF);
                 }
 
-                :host([highlighted]) .cell,
-                :host([special][highlighted]) .cell {
+                :host([highlighted]) #cell,
+                :host([special][highlighted]) #cell {
                     color: var(--grid-highlight-color, #FFF);
                     background-color: var(--grid-highlight-background-color, #CCC);
                 }
 
-                .cell {
+                #cell {
                     background-color: var(--grid-background-color, #E2E2E2);
                     border:solid 1px #CCC;
                     color: var(--grid-color, #333);
@@ -59,11 +56,11 @@ export class RhiUiSelectableGridCell extends LitElement {
                 }
             </style>
             <!-- shadow DOM for your element -->
-            <div class="cell">${this.displayValue}</span>
+            <div id="cell"></div>
         `;
     }
 
-    private displayValue: string = '';
+    private cell: HTMLElement;
 
     public get selected(): boolean { return this.hasAttribute('selected'); }
     public set selected(value: boolean) {
@@ -95,22 +92,36 @@ export class RhiUiSelectableGridCell extends LitElement {
 
     public constructor() {
         super();
+
+        this.attachShadow({mode: 'open'});
+        this.requestRender();
+    }
+
+    public connectedCallback(): void {
+        this.cell = this.shadowRoot.getElementById('cell');
+        this.updateDisplayValue();
+    }
+
+    private requestRender(): void {
+        const template: HTMLTemplateElement = <HTMLTemplateElement>document.createElement('template');
+        template.innerHTML = this.getTemplate({});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     public attributeChangedCallback(name: string, oldValue: string, newValue: string, namespace: string): void {
-        super.attributeChangedCallback(name, oldValue, newValue, namespace);
-
-
         if (oldValue === newValue || !/^(preview|value)$/.test(name)) {
             return;
         }
         
         this.updateDisplayValue();
-        this.requestRender();
     }
 
     private updateDisplayValue(): void {
-        this.displayValue = this.hasAttribute('preview') ? this.preview : this.value;
+        if (!this.cell) {
+            return;
+        }
+
+        this.cell.textContent = this.hasAttribute('preview') ? this.preview : this.value;
     }
 }
 

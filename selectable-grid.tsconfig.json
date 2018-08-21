@@ -11,21 +11,21 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./packages/selectable-grid",
+        "outDir": "./packages/@rhi-ui/selectable-grid",
         "removeComments": false,
         "sourceMap": false,
         "target": "es6"
     },
     "files": [
-        "./src/selectable-grid/rhi-ui-selectable-grid.ts",
-        "./src/selectable-grid/rhi-ui-selectable-grid-cell.ts",
-        "./src/selectable-grid/rhi-ui-selectable-grid-demo.ts"
+        "./src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.ts",
+        "./src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.ts",
+        "./src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts"
     ],
     "exclude": [
         "./node_modules",
         "**/*.spec.ts",
-        "./src/demo-snippet",
-        "./src/logo",
-        "./src/markdown-viewer"
+        "./src/@rhi-ui/demo-snippet",
+        "./src/@rhi-ui/logo",
+        "./src/@rhi-ui/markdown-viewer"
     ]
 }

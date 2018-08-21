@@ -15,38 +15,33 @@
  * limitations under the License.
 */
 'use strict';
-import { html, LitElement } from '@polymer/lit-element';
-export class RhiUiSelectableGridCell extends LitElement {
-    constructor() {
-        super();
-        this.displayValue = '';
-    }
+export class RhiUiSelectableGridCell extends HTMLElement {
     static get is() { return 'rhi-ui-selectable-grid-cell'; }
     static get observedAttributes() {
         return ['value', 'preview'];
     }
-    _render(props) {
-        return html `
+    getTemplate(props) {
+        return `
             <style>
                 :host {
                     display: block;
                 }
 
-                :host([selected]) .cell {
+                :host([selected]) #cell {
                     border-color: var(--grid-selected-border-color, #666);
                 }
 
-                :host([special]) .cell {
+                :host([special]) #cell {
                     background-color: var(--grid-special-background-color, #FFF);
                 }
 
-                :host([highlighted]) .cell,
-                :host([special][highlighted]) .cell {
+                :host([highlighted]) #cell,
+                :host([special][highlighted]) #cell {
                     color: var(--grid-highlight-color, #FFF);
                     background-color: var(--grid-highlight-background-color, #CCC);
                 }
 
-                .cell {
+                #cell {
                     background-color: var(--grid-background-color, #E2E2E2);
                     border:solid 1px #CCC;
                     color: var(--grid-color, #333);
@@ -59,7 +54,7 @@ export class RhiUiSelectableGridCell extends LitElement {
                 }
             </style>
             <!-- shadow DOM for your element -->
-            <div class="cell">${this.displayValue}</span>
+            <div id="cell"></div>
         `;
     }
     get selected() { return this.hasAttribute('selected'); }
@@ -87,16 +82,31 @@ export class RhiUiSelectableGridCell extends LitElement {
             this.removeAttribute('preview');
         }
     }
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.requestRender();
+    }
+    connectedCallback() {
+        this.cell = this.shadowRoot.getElementById('cell');
+        this.updateDisplayValue();
+    }
+    requestRender() {
+        const template = document.createElement('template');
+        template.innerHTML = this.getTemplate({});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
     attributeChangedCallback(name, oldValue, newValue, namespace) {
-        super.attributeChangedCallback(name, oldValue, newValue, namespace);
         if (oldValue === newValue || !/^(preview|value)$/.test(name)) {
             return;
         }
         this.updateDisplayValue();
-        this.requestRender();
     }
     updateDisplayValue() {
-        this.displayValue = this.hasAttribute('preview') ? this.preview : this.value;
+        if (!this.cell) {
+            return;
+        }
+        this.cell.textContent = this.hasAttribute('preview') ? this.preview : this.value;
     }
 }
 customElements.define(RhiUiSelectableGridCell.is, RhiUiSelectableGridCell);

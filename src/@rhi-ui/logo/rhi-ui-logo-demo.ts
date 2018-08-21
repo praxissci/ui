@@ -64,7 +64,7 @@ export class RhiUiLogoDemo extends HTMLElement {
     public static get observedAttributes(): string[] {
         const attributes: string[] = [];
 
-        for (let key in RhiUiMarkdownViewer.properties) {
+        for (let key in RhiUiLogoDemo.properties) {
             attributes.push(key.toLowerCase());
         }
 
@@ -79,7 +79,7 @@ export class RhiUiLogoDemo extends HTMLElement {
         this.attachShadow({mode: 'open'});
 
         // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiDemoSnippet}`);
+        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
 
         this.requestRender();
     }
@@ -102,11 +102,9 @@ export class RhiUiLogoDemo extends HTMLElement {
         
         if (name === 'file-uri' && newValue) {
             const readmeViewer: HTMLElement = this.shadowRoot.getElementById('readme-viewer');
-            const markdownViewer: HTMLElement = this.shadowRoot.getElementById('markdwon-viewer');
 
             if (readmeViewer) {
                 readmeViewer.setAttribute('file-uri', newValue);
-                markdownViewer.setAttribute('file-uri', newValue);
             }
         }
     }
