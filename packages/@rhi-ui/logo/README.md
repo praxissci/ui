@@ -14,11 +14,11 @@ This typeface should never be altered.
 
 ### Logo Colours
 
-|          |    Pantone 285C | Neutral Black C |     Cool Grey 7 |
-|----------|----------------:|----------------:|----------------:|
-| __CMYK__ | 100  45   0  19 |   0   0   0 100 | 0     0   0  50 |
-| __RGB__  |       0 114 206 |       0   0   0 |     127 127 127 |
-| __HEX__  |         #0072CE |         #000000 |         #7F7F7F |
+|          |    Pantone 285C | Neutral Black C |     Cool Grey 7 |      Light Grey |
+|----------|----------------:|----------------:|----------------:|----------------:|
+| __CMYK__ | 100  45   0  19 |   0   0   0 100 |   0   0   0  50 |   2   2   0  29 |
+| __RGB__  |       0 114 206 |       0   0   0 |     127 127 127 |     178 179 182 |
+| __HEX__  |         #0072CE |         #000000 |         #7F7F7F |         #B2B3B6 |
 
 			
 Whenever possible, we encourage use of the logo in colour on a white background.
