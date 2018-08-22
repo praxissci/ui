@@ -10,7 +10,7 @@
   "dependencies": {},
   "description": "Loads a markdown file and displays it.",
   "devDependencies": {
-    "@rhi-ui/demo-snippet": "^1.0.3",
+    "@rhi-ui/demo-snippet": "^1.0.4",
     "markdown-it": "^8.4.2"
   },
   "homepage": "https://www.rickhanseninstitute.org",
@@ -25,5 +25,5 @@
   "scripts": {
     "prepublishOnly": "tsc -p ../../../"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

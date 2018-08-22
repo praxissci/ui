@@ -37,6 +37,20 @@ export class RhiUiMarkdownViewer extends HTMLElement {
                     display: block;
                     white-space: normal;
                 }
+
+                pre {
+                    overflow-x: auto;
+                    padding-bottom: 16px;
+                }
+
+                table {
+                    font-size: 14px;
+                }
+
+                table td,
+                table th {
+                    padding: 4px 8px;
+                }
             </style>
             <div id="markdown">Loading file...</div>
         `;
