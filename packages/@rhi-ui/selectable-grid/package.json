@@ -8,7 +8,7 @@
     },
     "description": "Grid that supports selection by dragging",
     "devDependencies": {
-        "@rhi-ui/demo-snippet": "^1.0.3",
+        "@rhi-ui/demo-snippet": "^1.0.4",
         "@rhi-ui/markdown-viewer": "^1.0.3",
         "markdown-it": "^8.4.2"
     },
@@ -33,5 +33,5 @@
     "scripts": {
         "prepublishOnly": "tsc -p ../../../selectable-grid.tsconfig.json"
     },
-    "version": "1.0.4"
+    "version": "1.0.5"
 }

@@ -52,9 +52,33 @@ export class RhiUiSelectableGridCell extends HTMLElement {
                     text-align: center;
                     width: 37px;
                 }
+
+                .noselect {
+                    -webkit-touch-callout: none; /* iOS Safari */
+                    -webkit-user-select: none; /* Safari */
+                    -khtml-user-select: none; /* Konqueror HTML */
+                    -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+                }
+
+                /* The following code was added for styling to work on MS Edge */
+                [selected] #cell {
+                    border-color: var(--grid-selected-border-color, #666);
+                }
+
+                [special] #cell {
+                    background-color: var(--grid-special-background-color, #FFF);
+                }
+
+                [highlighted] #cell,
+                [special][highlighted] #cell {
+                    color: var(--grid-highlight-color, #FFF);
+                    background-color: var(--grid-highlight-background-color, #CCC);
+                }
             </style>
             <!-- shadow DOM for your element -->
-            <div id="cell"></div>
+            <div id="cell" class="noselect"></div>
         `;
     }
     get selected() { return this.hasAttribute('selected'); }

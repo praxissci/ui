@@ -43,7 +43,15 @@ export class RhiUiSelectableGridDemo extends HTMLElement {
 
                 rhi-ui-demo-snippet,
                 rhi-ui-markdown-viewer {
+                    display: block; /* Fix for MS Edge*/
                     margin-bottom: 48px;
+                }
+
+                /* This is also here for MS Edge compatibility */
+                rhi-ui-selectable-grid
+                rhi-ui-selectable-grid-cell {
+                    display: block;
+                    flex-grow: 0;
                 }
             </style>
             <rhi-ui-markdown-viewer id="readme-viewer" class="readme"></rhi-ui-markdown-viewer>
