@@ -57,7 +57,7 @@ export class RhiUiDemoSnippet extends HTMLElement {
                     font-family: serif;
                     font-size: 16px;
                     line-height: 20px;
-                    overflow: scroll;
+                    overflow-x: auto;
                     padding: 16px;
                 }
             </style>
