@@ -54,6 +54,25 @@ export class RhiUiLogoSmall extends HTMLElement {
                 .cls-3 {
                     fill: var(--rhi-ui-logo-blue, #0072CE);
                 }
+
+                /*
+                 * The :host notation with CSS variables did not work on MS Edge.
+                 * The code below has been added so that the component works on Edge just as on FireFox, Safari, and Chrome,
+                 */
+                [color-palette="black"] .cls-2,
+                [color-palette="black"] .cls-3 {
+                    fill: #000;
+                }
+
+                [color-palette="grayscale"] .cls-3 {
+                    fill: #B2B3B6;
+                }
+
+                [color-palette="white"] .cls-1,
+                [color-palette="white"] .cls-2,
+                [color-palette="white"] .cls-3 {
+                    fill: #FFF;
+                }
             </style>
             <!-- shadow DOM for your element -->
             <svg id="rhi-logo-small"

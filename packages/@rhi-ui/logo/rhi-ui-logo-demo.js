@@ -38,7 +38,18 @@ export class RhiUiLogoDemo extends HTMLElement {
 
                 rhi-ui-demo-snippet,
                 rhi-ui-markdown-viewer {
+                    display: block;
                     margin-bottom: 48px;
+                }
+
+                rhi-ui-logo {
+                    display: block;
+                    max-width: 512px;
+                }
+
+                rhi-ui-logo-small {
+                    display: block;
+                    max-width: 200px;
                 }
             </style>
             <rhi-ui-markdown-viewer id="readme-viewer" class="readme"></rhi-ui-markdown-viewer>
