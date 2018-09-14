@@ -49,7 +49,7 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 
 export default [
     config({
-        external: ['@rhi-ui/html', '@rhi-ui/markdown-viewer'],
+        external: ['@rhi-ui/html'],
         globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.ts',
         output: {
@@ -59,7 +59,7 @@ export default [
         }
     }),
     config({
-        external: ['@rhi-ui/html', '@rhi-ui/markdown-viewer'],
+        external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.ts',
         output: {
             file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.esm.js',

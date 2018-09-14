@@ -22,16 +22,19 @@ import typescript from 'rollup-plugin-typescript2';
 const defaults = { compilerOptions: { declaration: true } };
 const override = { compilerOptions: { declaration: false } };
 
-function config({ input = '', context = undefined, output = {}, external = [] }) {
+function config({ input = '', context = undefined, output = {}, external = [], globals = {} }) {
     return {
         input,
         context,
-        output: {
-            ...output,
-        },
         external: [
-            ...external,
+            ...external
         ],
+        globals: {
+            ...globals
+        },
+        output: {
+            ...output
+        },
         plugins: [
             resolve(),
             typescript({
@@ -46,36 +49,57 @@ function config({ input = '', context = undefined, output = {}, external = [] })
 
 export default [
     config({
+        external: ['@rhi-ui/html'],
+        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo.js',
             format: 'umd',
-            name: 'RHI_ISNCSCI_UI_MOBILE_SENSORY',
-        },
+            name: 'RHI_UI_LOGO',
+        }
     }),
     config({
+        external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo.esm.js',
             format: 'esm'
-        },
-        external: ['@rhi-ui/html']
+        }
     }),
     config({
+        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-small'],
+        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.js',
             format: 'umd',
-            name: 'RHI_ISNCSCI_UI_MOBILE_SENSORY_DEMO'
-        },
-        external: ['./rhi-ui-logo']
+            name: 'RHI_UI_LOGO_DEMO'
+        }
     }),
     config({
+        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-small'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.esm.js',
             format: 'esm'
-        },
-        external: ['@rhi-ui/html', '@rhi-ui/demo-snippet', '@rhi-ui/markdown-viewer', './rhi-ui-logo']
+        }
+    }),
+    config({
+        external: ['@rhi-ui/html'],
+        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
+        input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
+        output: {
+            file: 'packages/@rhi-ui/logo/rhi-ui-logo-small.js',
+            format: 'umd',
+            name: 'RHI_UI_LOGO_SMALL',
+        }
+    }),
+    config({
+        external: ['@rhi-ui/html'],
+        input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
+        output: {
+            file: 'packages/@rhi-ui/logo/rhi-ui-logo-small.esm.js',
+            format: 'esm'
+        }
     })
 ];

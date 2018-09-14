@@ -17,6 +17,7 @@
     },
     "files": [
         "../../src/@rhi-ui/logo/rhi-ui-logo.ts",
-        "../../src/@rhi-ui/logo/rhi-ui-logo-demo.ts"
+        "../../src/@rhi-ui/logo/rhi-ui-logo-demo.ts",
+        "../../src/@rhi-ui/logo/rhi-ui-logo-small.ts"
     ]
 }

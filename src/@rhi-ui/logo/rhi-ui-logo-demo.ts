@@ -89,9 +89,6 @@ export class RhiUiLogoDemo extends HTMLElement {
 
         this.attachShadow({mode: 'open'});
 
-        // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiLogo.is} and ${RhiUiLogoSmall.is} and ${RhiUiDemoSnippet.is} and ${RhiUiMarkdownViewer.is}`);
-
         this.requestRender();
     }
 
