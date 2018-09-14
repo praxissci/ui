@@ -4,21 +4,28 @@
         "@polymer/lit-element": "^0.5.2",
         "@polymer/polymer": "^3.0.5",
         "@rhi-ui/demo-snippet": "^1.0.4",
+        "@rhi-ui/html": "^1.0.2",
         "@rhi-ui/markdown-viewer": "^1.0.3",
         "@webcomponents/webcomponentsjs": "^2.0.4",
         "markdown-it": "^8.4.2"
     },
     "description": "",
     "devDependencies": {
+        "cpx": "^1.5.0",
         "express": "^4.16.3",
+        "rollup-plugin-node-resolve": "^3.4.0",
+        "rollup-plugin-typescript2": "^0.17.0",
         "typescript": "^3.0.1"
     },
-    "homepage": "https://www.rickhanseninstitute.org/rhi-isncsci/",
+    "homepage": "https://www.rickhanseninstitute.org/",
     "license": "Apache-2.0",
     "main": "index.js",
     "private": false,
-    "repository": "https://github.com/rick-hansen-institute/rhi-ui-isncsci.git",
+    "repository": "https://github.com/rick-hansen-institute/rhi-ui.git",
     "scripts": {
+        "build:html": "rollup -c ./build-configs/html/rollup.config.js && cpx \"./src/@rhi-ui/html/*.{md,json}\" ./packages/@rhi-ui/html",
+        "build:logo": "rollup -c ./build-configs/logo/rollup.config.js && cpx \"./src/@rhi-ui/logo/*.{md,json}\" ./packages/@rhi-ui/logo",
+        "publish:html": "npm run build:html && npm publish ./packages/@rhi-ui/html",
         "tsc": "tsc --watch",
         "start": "node server.js"
     },

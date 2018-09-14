@@ -12,3 +12,6 @@ node_modules/
 .npm
 *.tgz
 .env
+
+.rpt2_cache/
+packages/
