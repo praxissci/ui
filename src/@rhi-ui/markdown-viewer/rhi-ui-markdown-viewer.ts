@@ -16,11 +16,13 @@
 */
 'use strict';
 
+import { html } from '@rhi-ui/html';
+
 export class RhiUiMarkdownViewer extends HTMLElement {
     static get is() { return 'rhi-ui-markdown-viewer'; }
 
     public getTemplate(props: any): string {
-        return `
+        return html`
             <!-- shadow DOM for your element -->
             <!-- RHI Blue: #007DC2 -->
             <style>

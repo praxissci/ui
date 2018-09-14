@@ -4,7 +4,7 @@
         "@polymer/lit-element": "^0.5.2",
         "@polymer/polymer": "^3.0.5",
         "@rhi-ui/demo-snippet": "^1.0.4",
-        "@rhi-ui/html": "^1.0.2",
+        "@rhi-ui/html": "^1.0.4",
         "@rhi-ui/markdown-viewer": "^1.0.3",
         "@webcomponents/webcomponentsjs": "^2.0.4",
         "markdown-it": "^8.4.2"
@@ -23,9 +23,13 @@
     "private": false,
     "repository": "https://github.com/rick-hansen-institute/rhi-ui.git",
     "scripts": {
+        "build:demo-snippet": "rollup -c ./build-configs/demo-snippet/rollup.config.js && cpx \"./src/@rhi-ui/demo-snippet/*.{md,json}\" ./packages/@rhi-ui/demo-snippet",
         "build:html": "rollup -c ./build-configs/html/rollup.config.js && cpx \"./src/@rhi-ui/html/*.{md,json}\" ./packages/@rhi-ui/html",
         "build:logo": "rollup -c ./build-configs/logo/rollup.config.js && cpx \"./src/@rhi-ui/logo/*.{md,json}\" ./packages/@rhi-ui/logo",
+        "build:markdown-viewer": "rollup -c ./build-configs/markdown-viewer/rollup.config.js && cpx \"./src/@rhi-ui/markdown-viewer/*.{md,json}\" ./packages/@rhi-ui/markdown-viewer",
+        "publish:demo-snippet": "npm run build:demo-snippet && npm publish ./packages/@rhi-ui/demo-snippet",
         "publish:html": "npm run build:html && npm publish ./packages/@rhi-ui/html",
+        "publish:markdown-viewer": "npm run build:markdown-viewer && npm publish ./packages/@rhi-ui/markdown-viewer",
         "tsc": "tsc --watch",
         "start": "node server.js"
     },

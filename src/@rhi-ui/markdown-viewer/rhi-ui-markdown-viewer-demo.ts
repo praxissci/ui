@@ -16,15 +16,16 @@
 */
 'use strict';
 
-import { RhiUiDemoSnippet } from '../../../node_modules/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js';
-import { RhiUiMarkdownViewer } from './rhi-ui-markdown-viewer.js';
+import { RhiUiDemoSnippet } from '@rhi-ui/demo-snippet';
+import { html } from '@rhi-ui/html';
+import { RhiUiMarkdownViewer } from './rhi-ui-markdown-viewer';
 
 export class RhiUiMarkdownViewerDemo extends HTMLElement {
 
     public static get is(): string { return 'rhi-ui-markdown-viewer-demo'; }
     
     private getTemplate(props): string {
-        return `
+        return html`
             <!-- shadow DOM for your element -->
             <!-- RHI Blue: #007DC2 -->
             <style>
@@ -68,9 +69,6 @@ export class RhiUiMarkdownViewerDemo extends HTMLElement {
         super();
 
         this.attachShadow({mode: 'open'});
-
-        // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`Loaded ${RhiUiMarkdownViewer.is} and ${RhiUiDemoSnippet}`);
 
         this.requestRender();
     }

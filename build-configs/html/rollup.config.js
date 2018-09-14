@@ -50,7 +50,7 @@ export default [
         output: {
             file: 'packages/@rhi-ui/html/rhi-ui-html.js',
             format: 'umd',
-            name: 'RHI_ISNCSCI_UI_MOBILE_SENSORY',
+            name: 'RHI_UI_HTML',
         },
     }),
     config({
