@@ -29,6 +29,7 @@
         "build:markdown-viewer": "rollup -c ./build-configs/markdown-viewer/rollup.config.js && cpx \"./src/@rhi-ui/markdown-viewer/*.{md,json}\" ./packages/@rhi-ui/markdown-viewer",
         "publish:demo-snippet": "npm run build:demo-snippet && npm publish ./packages/@rhi-ui/demo-snippet",
         "publish:html": "npm run build:html && npm publish ./packages/@rhi-ui/html",
+        "publish:logo": "npm run build:logo && npm publish ./packages/@rhi-ui/logo",
         "publish:markdown-viewer": "npm run build:markdown-viewer && npm publish ./packages/@rhi-ui/markdown-viewer",
         "tsc": "tsc --watch",
         "start": "node server.js"
