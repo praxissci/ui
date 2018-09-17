@@ -8,21 +8,22 @@
     },
     "bundleDependencies": false,
     "dependencies": {
-        "@rhi-ui/html": "^1.0.5"
+        "@rhi-ui/html": "^1.0.6"
     },
     "description": "Element to demo custom elements",
     "devDependencies": {
-        "@rhi-ui/markdown-viewer": "^1.0.4",
+        "@rhi-ui/markdown-viewer": "^1.0.5",
         "markdown-it": "^8.4.2"
     },
     "homepage": "https://www.rickhanseninstitute.org",
     "license": "Apache-2.0",
     "main": "rhi-ui-demo-snippet.js",
+    "module": "rhi-ui-demo-snippet.esm.js",
     "name": "@rhi-ui/demo-snippet",
     "private": false,
     "repository": {
         "type": "git",
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
-    "version": "1.0.5"
+    "version": "1.0.6"
 }
