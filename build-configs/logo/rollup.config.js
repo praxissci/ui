@@ -67,7 +67,7 @@ export default [
         }
     }),
     config({
-        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-small'],
+        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-logo-small'],
         globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
         output: {
@@ -77,7 +77,7 @@ export default [
         }
     }),
     config({
-        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-small'],
+        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-logo-small'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.esm.js',

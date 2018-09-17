@@ -16,15 +16,16 @@
 */
 'use strict';
 
+import { html } from '@rhi-ui/html';
 import { GestureEventListeners } from '../../../node_modules/@polymer/polymer/lib/mixins/gesture-event-listeners.js';
 import * as Gestures from '../../../node_modules/@polymer/polymer/lib/utils/gestures.js';
-import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell.js';
+import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell';
 
 export class RhiUiSelectableGrid extends GestureEventListeners(HTMLElement) {
     public static get is(): string { return 'rhi-ui-selectable-grid'; }
 
-    public getTemplate(props: any): string {
-        return `
+    public getTemplate(): string {
+        return html`
             <style>
                 :host {
                     display: block;
@@ -84,9 +85,6 @@ export class RhiUiSelectableGrid extends GestureEventListeners(HTMLElement) {
 
         this.attachShadow({mode: 'open'});
 
-        // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`${RhiUiSelectableGrid.is}, ${RhiUiSelectableGridCell.is}`);
-
         this.requestRender();
     }
 
@@ -110,7 +108,7 @@ export class RhiUiSelectableGrid extends GestureEventListeners(HTMLElement) {
 
     private requestRender(): void {
         const template: HTMLTemplateElement = <HTMLTemplateElement>document.createElement('template');
-        template.innerHTML = this.getTemplate({});
+        template.innerHTML = this.getTemplate();
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
