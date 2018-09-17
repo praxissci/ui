@@ -31,8 +31,5 @@
         "type": "git",
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
-    "scripts": {
-        "prepublishOnly": "tsc -p ../../../selectable-grid.tsconfig.json"
-    },
-    "version": "1.0.6"
+    "version": "1.0.7"
 }

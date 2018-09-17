@@ -29,9 +29,6 @@ function config({ input = '', context = undefined, output = {}, external = [], g
         external: [
             ...external
         ],
-        globals: {
-            ...globals
-        },
         output: {
             ...output
         },
@@ -50,11 +47,11 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 export default [
     config({
         external: ['@rhi-ui/html'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.ts',
         output: {
             file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js',
             format: 'umd',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_DEMO_SNIPPET',
         }
     }),
@@ -68,11 +65,11 @@ export default [
     }),
     config({
         external: ['@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-demo-snippet'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.ts',
         output: {
             file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.js',
             format: 'umd',
+        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_DEMO_SNIPPET_DEMO'
         }
     }),

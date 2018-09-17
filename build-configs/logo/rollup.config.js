@@ -29,9 +29,6 @@ function config({ input = '', context = undefined, output = {}, external = [], g
         external: [
             ...external
         ],
-        globals: {
-            ...globals
-        },
         output: {
             ...output
         },
@@ -50,12 +47,12 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 export default [
     config({
         external: ['@rhi-ui/html'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo.js',
             format: 'umd',
-            name: 'RHI_UI_LOGO',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
+            name: 'RHI_UI_LOGO'
         }
     }),
     config({
@@ -68,11 +65,11 @@ export default [
     }),
     config({
         external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-logo-small'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.js',
             format: 'umd',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_LOGO_DEMO'
         }
     }),
@@ -86,12 +83,12 @@ export default [
     }),
     config({
         external: ['@rhi-ui/html'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
         output: {
             file: 'packages/@rhi-ui/logo/rhi-ui-logo-small.js',
             format: 'umd',
-            name: 'RHI_UI_LOGO_SMALL',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
+            name: 'RHI_UI_LOGO_SMALL'
         }
     }),
     config({

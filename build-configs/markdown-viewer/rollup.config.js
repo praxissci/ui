@@ -29,7 +29,6 @@ function config({ input = '', context = undefined, output = {}, external = [], g
         external: [
             ...external,
         ],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         output: {
             ...output,
         },
@@ -48,12 +47,12 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 export default [
     config({
         external: ['@rhi-ui/html'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.ts',
         output: {
             file: 'packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js',
             format: 'umd',
-            name: 'RHI_UI_MARKDOWN_VIEWER',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
+            name: 'RHI_UI_MARKDOWN_VIEWER'
         }
     }),
     config({
@@ -66,11 +65,11 @@ export default [
     }),
     config({
         external: ['@rhi-ui/html', '@rhi-ui/demo-snippet', './rhi-ui-markdown-viewer'],
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
         input: 'src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.ts',
         output: {
             file: 'packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.js',
             format: 'umd',
+            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_MARKDOWN_VIEWER_DEMO'
         }
     }),
