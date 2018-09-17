@@ -22,8 +22,5 @@
         "type": "git",
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
-    "scripts": {
-        "prepublishOnly": "tsc -p ../../../"
-    },
-    "version": "1.0.1"
+    "version": "1.0.5"
 }

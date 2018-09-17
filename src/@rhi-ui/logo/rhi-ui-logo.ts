@@ -16,11 +16,13 @@
 */
 'use strict';
 
+import { html } from '@rhi-ui/html';
+
 export class RhiUiLogo extends HTMLElement {
     public static get is(): string { return 'rhi-ui-logo'; }
 
-    public getTemplate(props: any): string {
-        return `
+    public getTemplate(): string {
+        return html`
             <style>
                 :host {
                     display: block;
@@ -95,7 +97,7 @@ export class RhiUiLogo extends HTMLElement {
 
     private requestRender(): void {
         const template: HTMLTemplateElement = <HTMLTemplateElement>document.createElement('template');
-        template.innerHTML = this.getTemplate({});
+        template.innerHTML = this.getTemplate();
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 }

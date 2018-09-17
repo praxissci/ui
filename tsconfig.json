@@ -11,7 +11,7 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./packages/@rhi-ui",
+        "outDir": "./build/@rhi-ui",
         "removeComments": false,
         "sourceMap": false,
         "target": "es6"

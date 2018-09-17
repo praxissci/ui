@@ -16,16 +16,13 @@
 */
 'use strict';
 
-import { RhiUiDemoSnippet } from '../../../node_modules/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js';
-import { RhiUiMarkdownViewer } from '../../../node_modules/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js';
-import { RhiUiSelectableGrid } from './rhi-ui-selectable-grid.js';
-import { RhiUiSelectableGridCell } from './rhi-ui-selectable-grid-cell.js';
+import { html } from '@rhi-ui/html';
 
 export class RhiUiSelectableGridDemo extends HTMLElement {
     public static get is(): string { return 'rhi-ui-selectable-grid-demo'; }
 
-    public getTemplate(props: any): string {
-        return `
+    public getTemplate(): string {
+        return html`
             <style>
                 :host {
                     display: block;
@@ -133,9 +130,6 @@ export class RhiUiSelectableGridDemo extends HTMLElement {
 
         this.attachShadow({mode: 'open'});
 
-        // I'm forcing loading these two libraries without having to add the import script on the consuming html page.
-        console.log(`${RhiUiSelectableGrid.is}, ${RhiUiSelectableGridCell.is}, ${RhiUiDemoSnippet.is}, and ${RhiUiMarkdownViewer.is}`);
-
         this.requestRender();
     }
 
@@ -144,7 +138,7 @@ export class RhiUiSelectableGridDemo extends HTMLElement {
 
     private requestRender(): void {
         const template: HTMLTemplateElement = <HTMLTemplateElement>document.createElement('template');
-        template.innerHTML = this.getTemplate({});
+        template.innerHTML = this.getTemplate();
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 

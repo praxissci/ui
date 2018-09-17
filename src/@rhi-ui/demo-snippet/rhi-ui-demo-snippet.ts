@@ -16,12 +16,14 @@
 */
 'use strict';
 
+import { html } from '@rhi-ui/html';
+
 export class RhiUiDemoSnippet extends HTMLElement {
 
     public static get is(): string { return 'rhi-ui-demo-snippet'; }
 
-    private getTemplate(props): string {
-        return `
+    private getTemplate(): string {
+        return html`
             <!-- shadow DOM for your element -->
             <!-- RHI Blue: #007DC2 -->
             <style>
@@ -119,7 +121,7 @@ export class RhiUiDemoSnippet extends HTMLElement {
 
     private requestRender(): void {
         const template: HTMLTemplateElement = <HTMLTemplateElement>document.createElement('template');
-        template.innerHTML = this.getTemplate({});
+        template.innerHTML = this.getTemplate();
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
