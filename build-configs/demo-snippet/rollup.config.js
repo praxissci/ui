@@ -62,23 +62,5 @@ export default [
             file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.esm.js',
             format: 'esm'
         }
-    }),
-    config({
-        external: ['@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-demo-snippet'],
-        input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.js',
-            format: 'umd',
-        globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
-            name: 'RHI_UI_DEMO_SNIPPET_DEMO'
-        }
-    }),
-    config({
-        external: ['@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-demo-snippet'],
-        input: 'src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.esm.js',
-            format: 'esm'
-        }
     })
 ];

@@ -62,23 +62,5 @@ export default [
             file: 'packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.esm.js',
             format: 'esm'
         }
-    }),
-    config({
-        external: ['@rhi-ui/html', '@rhi-ui/demo-snippet', './rhi-ui-markdown-viewer'],
-        input: 'src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.js',
-            format: 'umd',
-            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
-            name: 'RHI_UI_MARKDOWN_VIEWER_DEMO'
-        }
-    }),
-    config({
-        external: ['@rhi-ui/html', '@rhi-ui/demo-snippet', '@rhi-ui/markdown-viewer', './rhi-ui-markdown-viewer'],
-        input: 'src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.esm.js',
-            format: 'esm'
-        }
     })
 ];

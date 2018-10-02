@@ -33,9 +33,13 @@ const override = { compilerOptions: { declaration: false } };
  * Rollup, on my machine, is mapping the file using E:\rhi\ui\src\@rhi-ui\selectable-grid\rhi-ui-selectable-grid-cell\rhi-ui-selectable-grid-cell.js
  * We need to use path.resolve to generate the correct mapping.
  */
+const selectableGridPath =
+    path.resolve('src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.js')
+        .replace('.js', '');
+
 const selectableGridCellPath =
     path.resolve('src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.js')
-    .replace('.js', '');
+        .replace('.js', '');
 
 function config({ input = '', context = undefined, output = {}, external = [], globals = {} }) {
 
@@ -63,12 +67,34 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 }
 
 export default [
+    // INDEX
+    config({
+        external: ['./rhi-ui-selectable-grid', './rhi-ui-selectable-grid-cell'],
+        input: 'src/@rhi-ui/selectable-grid/index.ts',
+        output: {
+            file: 'packages/@rhi-ui/selectable-grid/umd/index.js',
+            format: 'umd',
+            globals: {
+                [selectableGridPath]: 'RHI_UI_SELECTABLE_GRID',
+                [selectableGridCellPath]: "RHI_UI_SELECTABLE_GRID_CELL"
+            },
+            name: 'RHI_UI_SELECTABLE_GRID',
+        }
+    }),
+    config({
+        external: ['./rhi-ui-selectable-grid', './rhi-ui-selectable-grid-cell'],
+        input: 'src/@rhi-ui/selectable-grid/index.ts',
+        output: {
+            file: 'packages/@rhi-ui/selectable-grid/esm/index.js',
+            format: 'esm'
+        }
+    }),
     // SELECTABLE-GRID-CELL
     config({
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.ts',
         output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.js',
+            file: 'packages/@rhi-ui/selectable-grid/umd/rhi-ui-selectable-grid-cell.js',
             format: 'umd',
             globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_SELECTABLE_GRID_CELL'
@@ -78,7 +104,7 @@ export default [
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.ts',
         output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.esm.js',
+            file: 'packages/@rhi-ui/selectable-grid/esm/rhi-ui-selectable-grid-cell.js',
             format: 'esm'
         }
     }),
@@ -90,7 +116,7 @@ export default [
         ],
         input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.ts',
         output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.js',
+            file: 'packages/@rhi-ui/selectable-grid/umd/rhi-ui-selectable-grid.js',
             format: 'umd',
             globals: {
                 '@rhi-ui/html': 'RHI_UI_HTML',
@@ -106,40 +132,7 @@ export default [
         ],
         input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.ts',
         output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.esm.js',
-            format: 'esm'
-        }
-    }),
-    // SELECTABLE-GRID-DEMO
-    config({
-        external: [
-            '@rhi-ui/demo-snippet',
-            '@rhi-ui/html',
-            '@rhi-ui/markdown-viewer',
-            './rhi-ui-selectable-grid-cell',
-            './rhi-ui-selectable-grid'
-        ],
-        input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.js',
-            format: 'umd',
-            globals: {
-                '@rhi-ui/html': 'RHI_UI_HTML'
-            },
-            name: 'RHI_UI_SELECTABLE_GRID_DEMO'
-        }
-    }),
-    config({
-        external: [
-            '@rhi-ui/demo-snippet',
-            '@rhi-ui/html',
-            '@rhi-ui/markdown-viewer',
-            './rhi-ui-selectable-grid-cell',
-            './rhi-ui-selectable-grid'
-        ],
-        input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.esm.js',
+            file: 'packages/@rhi-ui/selectable-grid/esm/rhi-ui-selectable-grid.js',
             format: 'esm'
         }
     })

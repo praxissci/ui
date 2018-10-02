@@ -16,7 +16,6 @@
         "target": "es6"
     },
     "files": [
-        "../../src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.ts",
-        "../../src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet-demo.ts"
+        "../../src/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.ts"
     ]
 }
