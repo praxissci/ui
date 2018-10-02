@@ -8,11 +8,6 @@
         "@rhi-ui/html": "^1.0.6"
     },
     "description": "Grid that supports selection by dragging",
-    "devDependencies": {
-        "@rhi-ui/demo-snippet": "^1.0.6",
-        "@rhi-ui/markdown-viewer": "^1.0.5",
-        "markdown-it": "^8.4.2"
-    },
     "homepage": "https://www.rickhanseninstitute.org",
     "keywords": [
         "Rick",
@@ -32,5 +27,5 @@
         "type": "git",
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
-    "version": "1.0.8"
+    "version": "1.1.0"
 }

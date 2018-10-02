@@ -109,38 +109,5 @@ export default [
             file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.esm.js',
             format: 'esm'
         }
-    }),
-    // SELECTABLE-GRID-DEMO
-    config({
-        external: [
-            '@rhi-ui/demo-snippet',
-            '@rhi-ui/html',
-            '@rhi-ui/markdown-viewer',
-            './rhi-ui-selectable-grid-cell',
-            './rhi-ui-selectable-grid'
-        ],
-        input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.js',
-            format: 'umd',
-            globals: {
-                '@rhi-ui/html': 'RHI_UI_HTML'
-            },
-            name: 'RHI_UI_SELECTABLE_GRID_DEMO'
-        }
-    }),
-    config({
-        external: [
-            '@rhi-ui/demo-snippet',
-            '@rhi-ui/html',
-            '@rhi-ui/markdown-viewer',
-            './rhi-ui-selectable-grid-cell',
-            './rhi-ui-selectable-grid'
-        ],
-        input: 'src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.esm.js',
-            format: 'esm'
-        }
     })
 ];

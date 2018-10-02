@@ -16,7 +16,6 @@
         "target": "es6"
     },
     "files": [
-        "../../src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.ts",
-        "../../src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer-demo.ts"
+        "../../src/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.ts"
     ]
 }

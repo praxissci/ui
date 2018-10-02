@@ -18,9 +18,28 @@
 
 import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
+import path from 'path';
 
 const defaults = { compilerOptions: { declaration: true } };
 const override = { compilerOptions: { declaration: false } };
+
+/**
+* https://rollupjs.org/guide/en
+* View: external -e/--external
+* 
+* When marking external files that are consumed using relative paths (e.g. ./my-component),
+* the globals will require the local path to the file.
+* This happens with ./rhi-ui-logo.
+* Rollup, on my machine, is mapping the file using E:\rhi\ui\src\@rhi-ui\logo\rhi-ui-logo.js
+* We need to use path.resolve to generate the correct mapping.
+*/
+const logoPath =
+   path.resolve('src/@rhi-ui/logo/rhi-ui-logo.js')
+       .replace('.js', '');
+
+const logoSmallPath =
+   path.resolve('src/@rhi-ui/logo/rhi-ui-logo-small.js')
+       .replace('.js', '');
 
 function config({ input = '', context = undefined, output = {}, external = [], globals = {} }) {
     return {
@@ -45,6 +64,28 @@ function config({ input = '', context = undefined, output = {}, external = [], g
 }
 
 export default [
+    // INDEX
+    config({
+        external: ['./rhi-ui-logo', './rhi-ui-logo-small'],
+        input: 'src/@rhi-ui/logo/index.ts',
+        output: {
+            file: 'packages/@rhi-ui/logo/index.js',
+            format: 'umd',
+            globals: {
+                [logoPath]: 'RHI_UI_LOGO',
+                [logoSmallPath]: "RHI_UI_LOGO_SMALL"
+            },
+            name: 'RHI_UI_LOGO',
+        }
+    }),
+    config({
+        external: ['./rhi-ui-logo', './rhi-ui-logo-small'],
+        input: 'src/@rhi-ui/logo/index.ts',
+        output: {
+            file: 'packages/@rhi-ui/logo/index.esm.js',
+            format: 'esm'
+        }
+    }),
     config({
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',

@@ -17,7 +17,6 @@
     },
     "files": [
         "../../src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.ts",
-        "../../src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.ts",
-        "../../src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.ts"
+        "../../src/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.ts"
     ]
 }
