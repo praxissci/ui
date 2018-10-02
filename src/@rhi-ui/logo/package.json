@@ -18,13 +18,13 @@
         "svg"
     ],
     "license": "Apache-2.0",
-    "main": "index.js",
-    "module": "index.esm.js",
+    "main": "./umd/index.js",
+    "module": "./esm/index.js",
     "name": "@rhi-ui/logo",
     "private": false,
     "repository": {
         "type": "git",
         "url": "git+https://github.com/rick-hansen-institute/ui.git"
     },
-    "version": "1.1.1"
+    "version": "1.1.2"
 }

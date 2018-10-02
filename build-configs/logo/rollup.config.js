@@ -69,7 +69,7 @@ export default [
         external: ['./rhi-ui-logo', './rhi-ui-logo-small'],
         input: 'src/@rhi-ui/logo/index.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/index.js',
+            file: 'packages/@rhi-ui/logo/umd/index.js',
             format: 'umd',
             globals: {
                 [logoPath]: 'RHI_UI_LOGO',
@@ -82,7 +82,7 @@ export default [
         external: ['./rhi-ui-logo', './rhi-ui-logo-small'],
         input: 'src/@rhi-ui/logo/index.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/index.esm.js',
+            file: 'packages/@rhi-ui/logo/esm/index.js',
             format: 'esm'
         }
     }),
@@ -90,7 +90,7 @@ export default [
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo.js',
+            file: 'packages/@rhi-ui/logo/umd/rhi-ui-logo.js',
             format: 'umd',
             globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_LOGO'
@@ -100,7 +100,7 @@ export default [
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo.esm.js',
+            file: 'packages/@rhi-ui/logo/esm/rhi-ui-logo.js',
             format: 'esm'
         }
     }),
@@ -108,7 +108,7 @@ export default [
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo-small.js',
+            file: 'packages/@rhi-ui/logo/umd/rhi-ui-logo-small.js',
             format: 'umd',
             globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
             name: 'RHI_UI_LOGO_SMALL'
@@ -118,7 +118,7 @@ export default [
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
         output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo-small.esm.js',
+            file: 'packages/@rhi-ui/logo/esm/rhi-ui-logo-small.js',
             format: 'esm'
         }
     })
