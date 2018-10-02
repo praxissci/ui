@@ -64,24 +64,6 @@ export default [
         }
     }),
     config({
-        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-logo-small'],
-        input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.js',
-            format: 'umd',
-            globals: { '@rhi-ui/html': 'RHI_UI_HTML' },
-            name: 'RHI_UI_LOGO_DEMO'
-        }
-    }),
-    config({
-        external: ['@rhi-ui/demo-snippet', '@rhi-ui/html', '@rhi-ui/markdown-viewer', './rhi-ui-logo', './rhi-ui-logo-small'],
-        input: 'src/@rhi-ui/logo/rhi-ui-logo-demo.ts',
-        output: {
-            file: 'packages/@rhi-ui/logo/rhi-ui-logo-demo.esm.js',
-            format: 'esm'
-        }
-    }),
-    config({
         external: ['@rhi-ui/html'],
         input: 'src/@rhi-ui/logo/rhi-ui-logo-small.ts',
         output: {
