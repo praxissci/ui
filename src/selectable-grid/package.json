@@ -1,0 +1,9 @@
+{
+    "description": "Grid that supports selection by dragging",
+    "keywords": [
+        "grid",
+        "selectable"
+    ],
+    "name": "@rhi-ui/selectable-grid",
+    "version": "1.1.1"
+}

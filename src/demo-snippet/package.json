@@ -1,0 +1,9 @@
+{
+    "description": "Element to demo custom elements",
+    "keywords": [
+        "demo",
+        "snippet"
+    ],
+    "name": "@rhi-ui/demo-snippet",
+    "version": "1.1.0"
+}
