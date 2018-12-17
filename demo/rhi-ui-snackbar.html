@@ -48,19 +48,23 @@
     </demo-snippet>
     <demo-snippet>
         <template>
-            <rhi-ui-snackbar id="centeredSnackbar" message="Centered snackbar" align-center></rhi-ui-snackbar>
-            <button>Show centered snackbar</button>
+            <rhi-ui-snackbar id="customTimeout" message="Timeout after 1 second" timeout="1000"></rhi-ui-snackbar>
+            <button>Show custom timeout</button>
             <script>
-                const centeredSnackbar = document.querySelector('#centeredSnackbar');
-                centeredSnackbar.nextElementSibling.addEventListener('click', ()=>centeredSnackbar.show())
+                const customTimeout = document.querySelector('#customTimeout');
+                customTimeout.nextElementSibling.addEventListener('click', ()=>customTimeout.show())
             </script>
         </template>
     </demo-snippet>
     <demo-snippet>
         <template>
+            <rhi-ui-snackbar id="centeredSnackbar" message="Centered snackbar" align-center></rhi-ui-snackbar>
+            <button>Show centered snackbar</button>
             <rhi-ui-snackbar id="rightAlignedSnackbar" message="Right aligned snackbar" align-right></rhi-ui-snackbar>
             <button>Show right aligned snackbar</button>
             <script>
+                const centeredSnackbar = document.querySelector('#centeredSnackbar');
+                centeredSnackbar.nextElementSibling.addEventListener('click', ()=>centeredSnackbar.show())
                 const rightAlignedSnackbar = document.querySelector('#rightAlignedSnackbar');
                 rightAlignedSnackbar.nextElementSibling.addEventListener('click', ()=>rightAlignedSnackbar.show())
             </script>
