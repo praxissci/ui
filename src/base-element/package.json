@@ -1,0 +1,9 @@
+{
+    "description": "Base class which has protected methods to initialize a list of properties and ui-bindings based on a list of ICustomElementProperty instances.",
+    "keywords": [
+        "base",
+        "element"
+    ],
+    "name": "@rhi-ui/base-element",
+    "version": "0.0.1"
+}
