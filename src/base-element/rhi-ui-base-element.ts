@@ -21,7 +21,7 @@ export interface ICustomElementProperty {
     type: string;
     useProperty: string;
     value: string;
-};
+}
 
 export function getAttributesFrom(properties: { [index: string]: ICustomElementProperty }): string[] {
     const attributes: string[] = [];
