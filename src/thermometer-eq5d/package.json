@@ -1,0 +1,10 @@
+{
+    "description": "Thermometer element for GRP form EQ5D.",
+    "keywords": [
+        "custom element",
+        "thermometer",
+        "eq5d"
+    ],
+    "name": "@rhi-ui/thermometer-eq5d",
+    "version": "0.0.1"
+}
