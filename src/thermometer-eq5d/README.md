@@ -16,9 +16,7 @@
 </rhi-ui-thermometer-eq5d>
 ```
 
-The code above would produce the following result:
-
-![Thermometer EQ5D](documentation/thermometer-eq5d.png "Thermometer EQ5D")
+[Demo](http://rhi-tech.azurewebsites.net/wcc/#rhi-ui-thermometer-eq5d)
 
 ### Property (Attribute)
 | Property (Attribute) | Type    | Description |
