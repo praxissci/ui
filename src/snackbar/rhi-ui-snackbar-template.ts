@@ -20,7 +20,7 @@ export const template: string = `
     <!-- shadow DOM for your element -->
     <style>
         :host {
-            background-color: #323232;
+            background-color: var(--rhi-ui-snackbar-background-color, #323232);
             bottom: 24px;
             box-sizing: border-box;
             display: flex;
@@ -48,7 +48,7 @@ export const template: string = `
         }
         #message{
             align-items: center;
-            color:#fff;
+            color: var(--rhi-ui-snackbar-text-color, #fff);
             display: flex;
             font-size: 1rem;
             line-height: 1.5rem;
@@ -58,7 +58,7 @@ export const template: string = `
         ::slotted(button){
             background-color: transparent;
             border: none;
-            color: var(--isncsci-secondary-text-color,#666);
+            color: var(--rhi-ui-snackbar-button-text-color,#aaa);
             outline: none;
             text-transform: uppercase;
         }

@@ -16,5 +16,6 @@
  */
 'use strict';
 
-export { RhiIsncsciUiSnackbar } from './rhi-ui-snackbar';
+export { RhiUiSnackbar } from './rhi-ui-snackbar';
+export { RhiUiSnackbarButton } from './rhi-ui-snackbar-button';
 export { template } from './rhi-ui-snackbar-template';

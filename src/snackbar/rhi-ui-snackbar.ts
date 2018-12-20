@@ -16,14 +16,18 @@
  */
 'use strict';
 
-import { template as RhiIsncsciUiSnackbarTemplate} from './rhi-ui-snackbar-template';
-
-export class RhiIsncsciUiSnackbar extends HTMLElement {
+import { RhiUiSnackbarButton } from './rhi-ui-snackbar-button';
+import { template as RhiUiSnackbarTemplate} from './rhi-ui-snackbar-template';
+export class RhiUiSnackbar extends HTMLElement {
     public static get is(): string { return 'rhi-ui-snackbar'; }
 
     public static get observedAttributes(): string[] {
         const attributes: string[] = ['active', 'message'];
         return attributes;
+    }
+
+    public get active(): boolean {
+        return this.hasAttribute('active');
     }
 
     public get align(): string {
@@ -85,7 +89,7 @@ export class RhiIsncsciUiSnackbar extends HTMLElement {
     }
 
     private messageElement: HTMLDivElement;
-    private buttons: HTMLButtonElement[];
+    private buttonElements: HTMLButtonElement[];
 
     public constructor() {
         super();
@@ -94,11 +98,11 @@ export class RhiIsncsciUiSnackbar extends HTMLElement {
         this.render(shadowRoot);
 
         this.messageElement = shadowRoot.querySelector(`#message`) as HTMLDivElement;
-        this.buttons = Array.from(shadowRoot.querySelector('slot')!.assignedElements()) as HTMLButtonElement[];
+        this.buttonElements = Array.from(shadowRoot.querySelector('slot')!.assignedElements()) as HTMLButtonElement[];
     }
 
     public connectedCallback() {
-        for (const button of this.buttons) {
+        for (const button of this.buttonElements) {
             this.addButtonEventListener(button);
         }
     }
@@ -130,9 +134,33 @@ export class RhiIsncsciUiSnackbar extends HTMLElement {
         this.removeAttribute('active');
     }
 
+    public setButtons(buttons: RhiUiSnackbarButton[]): void {
+        for (const button of this.buttonElements) {
+            button.remove();
+        }
+
+        this.buttonElements = buttons.map((button) => {
+            const buttonElement = document.createElement('button');
+            buttonElement.slot = '';
+            buttonElement.textContent = button.text;
+            if (button.eventName) {
+                buttonElement.setAttribute('event-name', button.eventName);
+                if (button.event) {
+                    this.addEventListener(button.eventName, button.event);
+                }
+            }
+            if (button.persistent) {
+                buttonElement.setAttribute('persistent', '');
+            }
+            this.addButtonEventListener(buttonElement);
+            this.appendChild(buttonElement);
+            return buttonElement;
+        });
+    }
+
     private render(shadowRoot: ShadowRoot): void {
         const template: HTMLTemplateElement = document.createElement('template');
-        template.innerHTML = RhiIsncsciUiSnackbarTemplate;
+        template.innerHTML = RhiUiSnackbarTemplate;
         shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
@@ -151,4 +179,4 @@ export class RhiIsncsciUiSnackbar extends HTMLElement {
     }
 }
 
-customElements.define(RhiIsncsciUiSnackbar.is, RhiIsncsciUiSnackbar);
+customElements.define(RhiUiSnackbar.is, RhiUiSnackbar);

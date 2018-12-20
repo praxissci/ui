@@ -76,17 +76,33 @@
                 <button event-name="action" persistent>Action</button>
                 <button>Dismiss</button>
             </rhi-ui-snackbar>
-            <button id="show-snackbar-1">Show persistent interactive snackbar</button>
+            <button>Show persistent interactive snackbar</button>
             <script>
                 const persistentInteractiveSnackbar = document.querySelector('#persistentInteractiveSnackbar');
-                persistentInteractiveSnackbar.addEventListener('action', ()=>alert('you have been alerted'))
-                persistentInteractiveSnackbar.nextElementSibling.addEventListener('click', ()=>persistentInteractiveSnackbar.show())
+                persistentInteractiveSnackbar.addEventListener('action', ()=>alert('you have been alerted'));
+                persistentInteractiveSnackbar.nextElementSibling.addEventListener('click', ()=>persistentInteractiveSnackbar.show());
             </script>
         </template>
     </demo-snippet>
-    <script type="module">
-        'use strict';
-    </script>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="programmedSnackbar"></rhi-ui-snackbar>
+            <button>Show programmed snackbar</button>
+            <script type="module">
+                import { RhiUiSnackbarButton } from "./scripts/@rhi-ui/snackbar/index.js";
+                const programmedSnackbar = document.querySelector('#programmedSnackbar');
+                programmedSnackbar.message = "Programmed snackbar";
+                programmedSnackbar.persistent = true;
+                programmedSnackbar.setButtons([
+                    // use RhiUiSnackbarButton constructor
+                    new RhiUiSnackbarButton('Action', true, 'action', ()=>alert('Action!')),
+                    // or use json object
+                    {text:'Dismiss', persistent: false, eventName:'dismiss', event:()=>alert('dismiss')},
+                ]);
+                programmedSnackbar.nextElementSibling.addEventListener('click', ()=>programmedSnackbar.show());
+            </script>
+        </template>
+    </demo-snippet>
 </body>
 
 </html>
