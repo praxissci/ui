@@ -98,7 +98,8 @@ export class RhiUiSnackbar extends HTMLElement {
         this.render(shadowRoot);
 
         this.messageElement = shadowRoot.querySelector(`#message`) as HTMLDivElement;
-        this.buttonElements = Array.from(shadowRoot.querySelector('slot')!.assignedElements()) as HTMLButtonElement[];
+        this.buttonElements = Array.from(shadowRoot.querySelector('slot')!.assignedNodes())
+            .filter((node) => node.nodeName === 'BUTTON') as HTMLButtonElement[];
     }
 
     public connectedCallback() {
