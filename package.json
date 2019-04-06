@@ -4,6 +4,7 @@
         "url": "https://github.com/rick-hansen-institute/ui/issues"
     },
     "dependencies": {
+        "@rhi-ui/base-element": "0.0.1",
         "@webcomponents/webcomponentsjs": "^2.2.1"
     },
     "description": "",
