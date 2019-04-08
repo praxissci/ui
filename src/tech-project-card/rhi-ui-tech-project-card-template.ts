@@ -21,7 +21,7 @@ export const template: string =
         <style>
             /* Material design card container */
             :host {
-                --rhi-ui-tech-font-common-base-font-family: 'Roboto', 'Noto', 'Open Sans', sans-serif';
+                --rhi-ui-tech-font-common-base-font-family: 'Roboto', 'Noto', 'Open Sans', 'sans-serif';
                 --rhi-ui-tech-project-card-lead-icon-background-color: #000;
                 --rhi-ui-tech-project-card-lead-icon-color: #FFF;
                 --rhi-ui-tech-project-card-media-background-color: #CCC;
@@ -30,7 +30,7 @@ export const template: string =
                 background: #fff;
                 border-radius: 2px;
                 display: block;
-                font-family: var(--rhi-ui-tech-font-common-base-font-family, 'Roboto', 'Noto', 'Open Sans', sans-serif);
+                font-family: var(--rhi-ui-tech-font-common-base-font-family, 'Roboto', 'Noto', 'Open Sans', 'sans-serif');
                 margin: 1rem;
                 min-height: 300px;
                 min-width: 300px;
