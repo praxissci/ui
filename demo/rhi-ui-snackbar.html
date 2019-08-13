@@ -1,0 +1,108 @@
+<!--
+    @license
+    Copyright (c) 2018 Rick Hansen Institute. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <title>Demo :: rhi-ui-mobile :: Rick Hansen Institute</title>
+    <script src="scripts/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="demo-snippet.js"></script>
+    <script src="scripts/@rhi-ui/snackbar/index.js" type="module"></script>
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="defaultSnackbar" message="Timeout in 2.75 seconds"></rhi-ui-snackbar>
+            <button>Show default snackbar</button>
+            <script>
+                const defaultSnackbar = document.querySelector('#defaultSnackbar');
+                defaultSnackbar.nextElementSibling.addEventListener('click', ()=>defaultSnackbar.show())
+            </script>
+        </template>
+    </demo-snippet>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="customTimeout" message="Timeout after 1 second" timeout="1000"></rhi-ui-snackbar>
+            <button>Show custom timeout</button>
+            <script>
+                const customTimeout = document.querySelector('#customTimeout');
+                customTimeout.nextElementSibling.addEventListener('click', ()=>customTimeout.show())
+            </script>
+        </template>
+    </demo-snippet>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="centeredSnackbar" message="Centered snackbar" align-center></rhi-ui-snackbar>
+            <button>Show centered snackbar</button>
+            <rhi-ui-snackbar id="rightAlignedSnackbar" message="Right aligned snackbar" align-right></rhi-ui-snackbar>
+            <button>Show right aligned snackbar</button>
+            <script>
+                const centeredSnackbar = document.querySelector('#centeredSnackbar');
+                centeredSnackbar.nextElementSibling.addEventListener('click', ()=>centeredSnackbar.show())
+                const rightAlignedSnackbar = document.querySelector('#rightAlignedSnackbar');
+                rightAlignedSnackbar.nextElementSibling.addEventListener('click', ()=>rightAlignedSnackbar.show())
+            </script>
+        </template>
+    </demo-snippet>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="persistentInteractiveSnackbar" message="Persistent snackbar. Use buttons to interact." persistent>
+                <button event-name="action" persistent>Action</button>
+                <button>Dismiss</button>
+            </rhi-ui-snackbar>
+            <button>Show persistent interactive snackbar</button>
+            <script>
+                const persistentInteractiveSnackbar = document.querySelector('#persistentInteractiveSnackbar');
+                persistentInteractiveSnackbar.addEventListener('action', ()=>alert('you have been alerted'));
+                persistentInteractiveSnackbar.nextElementSibling.addEventListener('click', ()=>persistentInteractiveSnackbar.show());
+            </script>
+        </template>
+    </demo-snippet>
+    <demo-snippet>
+        <template>
+            <rhi-ui-snackbar id="programmedSnackbar"></rhi-ui-snackbar>
+            <button>Show programmed snackbar</button>
+            <script type="module">
+                import { RhiUiSnackbarButton } from "./scripts/@rhi-ui/snackbar/index.js";
+                const programmedSnackbar = document.querySelector('#programmedSnackbar');
+                programmedSnackbar.message = "Programmed snackbar";
+                programmedSnackbar.persistent = true;
+                programmedSnackbar.setButtons([
+                    // use RhiUiSnackbarButton constructor
+                    new RhiUiSnackbarButton('Action', true, 'action', ()=>alert('Action!')),
+                    // or use json object
+                    {text:'Dismiss', persistent: false, eventName:'dismiss', event:()=>alert('dismiss')},
+                ]);
+                programmedSnackbar.nextElementSibling.addEventListener('click', ()=>programmedSnackbar.show());
+            </script>
+        </template>
+    </demo-snippet>
+</body>
+
+</html>

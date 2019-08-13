@@ -1,6 +1,6 @@
 <!--
     @license
-    Copyright (c) 2018 Rick Hansen Institute. All rights reserved.
+    Copyright (c) 2019 Rick Hansen Institute. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,16 +16,15 @@
 -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <title>Demo :: rhi-ui-markdown-viewer :: Rick Hansen Institute</title>
-    <script src="https://unpkg.com/markdown-it@8.4.2/dist/markdown-it.min.js"></script>
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <title>Demo :: rhi-ui-thermometer-eq5d :: Rick Hansen Institute</title>
     <script src="scripts/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="demo-snippet.js"></script>
-    <script src="scripts/@rhi-ui/markdown-viewer/index.js" type="module"></script>
+    <script src="scripts/@rhi-ui/tech-project-card/index.js" type="module"></script>
     <style>
         body {
             font-family: 'Roboto', 'Noto', sans-serif;
@@ -33,18 +32,35 @@
             margin: 0;
             padding: 16px;
         }
+
+        .cliniquick {
+            --rhi-ui-tech-project-card-media-background-color: #0CC;
+            --rhi-ui-tech-project-card-media-background-image: url('images/cq-logo-2.png');
+        }
     </style>
 </head>
+
 <body>
     <demo-snippet>
         <template>
-            <rhi-ui-markdown-viewer></rhi-ui-markdown-viewer>
+            <rhi-ui-tech-project-card
+                champion="Patricia Mills"
+                class="cliniquick"
+                code="rhi-cq"
+                description="Mobile data collection platform for the spasticity clinic at GF Strong."
+                elevation="1"
+                lead="Glenys"
+                lead-initials="GM"
+                milestones="[]"
+                name="CliniQuick for Spasticity"
+                resources='[{"name": "Production site", "url": "https://www.isncscialgorithm.com/"},{"name": "Source code repository", "url": "https://rhitech.visualstudio.com/ISNCSCI%20Algorithm%20site"}]'
+                status="maintenance"
+                users="[]"></rhi-ui-tech-project-card>
         </template>
     </demo-snippet>
-    <demo-snippet>
-        <template>
-            <rhi-ui-markdown-viewer file-uri="./README.md"></rhi-ui-markdown-viewer>
-        </template>
-    </demo-snippet>
+    <script type="module">
+        'use strict';
+    </script>
 </body>
+
 </html>

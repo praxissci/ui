@@ -1,40 +1,49 @@
 {
     "author": "RhiTech <tech@rickhanseninstitute.org>",
+    "bugs": {
+        "url": "https://github.com/rick-hansen-institute/ui/issues"
+    },
     "dependencies": {
-        "@polymer/lit-element": "^0.5.2",
-        "@polymer/polymer": "^3.0.5",
-        "@rhi-ui/demo-snippet": "^1.0.4",
-        "@rhi-ui/html": "^1.0.4",
-        "@rhi-ui/markdown-viewer": "^1.0.3",
-        "@webcomponents/webcomponentsjs": "^2.0.4",
-        "markdown-it": "^8.4.2"
+        "@rhi-ui/base-element": "0.0.1",
+        "@webcomponents/webcomponentsjs": "^2.2.1"
     },
     "description": "",
     "devDependencies": {
-        "cpx": "^1.5.0",
-        "express": "^4.16.3",
-        "rollup-plugin-node-resolve": "^3.4.0",
-        "rollup-plugin-typescript2": "^0.17.0",
-        "typescript": "^3.0.1"
+        "concurrently": "^4.1.0",
+        "fs-extra": "^7.0.1",
+        "http-server": "^0.11.1",
+        "rimraf": "^2.6.2",
+        "rollup": "^0.68.0",
+        "rollup-plugin-node-resolve": "4.0.0",
+        "rollup-plugin-terser": "^3.0.0",
+        "rollup-plugin-typescript2": "^0.18.1",
+        "tslint": "^5.11.0",
+        "typescript": "^3.2.2"
     },
     "homepage": "https://www.rickhanseninstitute.org/",
+    "keywords": [
+        "Rick",
+        "Hansen",
+        "Institute",
+        "custom elements",
+        "components"
+    ],
     "license": "Apache-2.0",
-    "main": "index.js",
+    "main": "./umd/index.js",
+    "module": "./index.js",
     "private": false,
-    "repository": "https://github.com/rick-hansen-institute/rhi-ui.git",
+    "repository": "https://github.com/rick-hansen-institute/ui.git",
     "scripts": {
-        "build:demo-snippet": "rollup -c ./build-configs/demo-snippet/rollup.config.js && cpx \"./src/@rhi-ui/demo-snippet/*.{md,json}\" ./packages/@rhi-ui/demo-snippet",
-        "build:html": "rollup -c ./build-configs/html/rollup.config.js && cpx \"./src/@rhi-ui/html/*.{md,json}\" ./packages/@rhi-ui/html",
-        "build:logo": "rollup -c ./build-configs/logo/rollup.config.js && cpx \"./src/@rhi-ui/logo/*.{md,json}\" ./packages/@rhi-ui/logo",
-        "build:markdown-viewer": "rollup -c ./build-configs/markdown-viewer/rollup.config.js && cpx \"./src/@rhi-ui/markdown-viewer/*.{md,json}\" ./packages/@rhi-ui/markdown-viewer",
-        "build:selectable-grid": "rollup -c ./build-configs/selectable-grid/rollup.config.js && cpx \"./src/@rhi-ui/selectable-grid/*.{md,json}\" ./packages/@rhi-ui/selectable-grid",
-        "publish:demo-snippet": "npm run build:demo-snippet && npm publish ./packages/@rhi-ui/demo-snippet",
-        "publish:html": "npm run build:html && npm publish ./packages/@rhi-ui/html",
-        "publish:logo": "npm run build:logo && npm publish ./packages/@rhi-ui/logo",
-        "publish:markdown-viewer": "npm run build:markdown-viewer && npm publish ./packages/@rhi-ui/markdown-viewer",
-        "publish:selectable-grid": "npm run build:selectable-grid && npm publish ./packages/@rhi-ui/selectable-grid",
-        "tsc": "tsc --watch",
-        "start": "node server.js"
+        "prebuild": "rimraf ./demo/scripts",
+        "build": "rollup -c",
+        "postbuild": "node postbuild/index",
+        "prebuild:prod": "rimraf ./dist",
+        "build:prod": "rollup -c --environment BUILD:production",
+        "postbuild:prod": "node -e \"process.env.BUILD='production'; require('./postbuild/index')\"",
+        "preserve": "npm run build",
+        "serve": "concurrently \"npm start\" \"rollup -c --watch\" --kill-others-on-fail",
+        "start": "http-server ./demo -o -c-1 -p 8082",
+        "tslint": "tslint -p ."
     },
-    "version": "0.0.3"
+    "version": "0.1.0"
 }

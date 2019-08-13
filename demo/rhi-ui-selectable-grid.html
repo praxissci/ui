@@ -21,15 +21,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
     <title>Demo :: rhi-ui-selectable-grid :: Rick Hansen Institute</title>
-    <script src="../node_modules/markdown-it/dist/markdown-it.min.js"></script>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <!--<script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>-->
-    <script src="../packages/@rhi-ui/html/rhi-ui-html.js"></script>
-    <script src="../packages/@rhi-ui/demo-snippet/rhi-ui-demo-snippet.js"></script>
-    <script src="../packages/@rhi-ui/markdown-viewer/rhi-ui-markdown-viewer.js"></script>
-    <script src="../packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-cell.js"></script>
-    <script src="../packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid.js"></script>
-    <script src="../packages/@rhi-ui/selectable-grid/rhi-ui-selectable-grid-demo.js"></script>
+    <script src="scripts/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="demo-snippet.js"></script>
+    <script src="scripts/@rhi-ui/selectable-grid/index.js" type="module"></script>
     <style>
         body {
             font-family: 'Roboto', 'Noto', sans-serif;
@@ -40,11 +35,29 @@
     </style>
 </head>
 <body>
-    <div class="main-content">
-        <rhi-ui-selectable-grid-demo file-uri="../packages/@rhi-ui/selectable-grid/README.md"></rhi-ui-selectable-grid-demo>
-    </div>
-    <script type="module">
-        'use strict';
-    </script>
+    <demo-snippet>
+        <template>
+            <rhi-ui-selectable-grid>
+                <div class="row">
+                    <rhi-ui-selectable-grid-cell value="1" selected></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="2" special></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="3"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="4"></rhi-ui-selectable-grid-cell>
+                </div>
+                <div class="row">
+                    <rhi-ui-selectable-grid-cell value="a"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="b"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="c"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="d"></rhi-ui-selectable-grid-cell>
+                </div>
+                <div class="row">
+                    <rhi-ui-selectable-grid-cell value="!"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="@"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="#"></rhi-ui-selectable-grid-cell>
+                    <rhi-ui-selectable-grid-cell value="$"></rhi-ui-selectable-grid-cell>
+                </div>
+            </rhi-ui-selectable-grid>
+        </template>
+    </demo-snippet>
 </body>
 </html>

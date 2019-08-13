@@ -1,0 +1,9 @@
+{
+    "description": "Basic tagged template which will allow us to get code highlights, on VSCode, for our vanilla custom element templates.",
+    "keywords": [
+        "html",
+        "tagged template"
+    ],
+    "name": "@rhi-ui/html",
+    "version": "1.0.6"
+}

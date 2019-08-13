@@ -1,0 +1,11 @@
+{
+    "description": "Project card use for reporting internally at RHI.",
+    "keywords": [
+        "custom element"
+    ],
+    "name": "@rhi-ui/tech-project-card",
+    "version": "0.0.3",
+    "dependencies": {
+        "@rhi-ui/base-element": "0.0.1"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "description": "Component to display an interactive message to user.",
+    "keywords": [
+        "snackbar"
+    ],
+    "name": "@rhi-ui/snackbar",
+    "version": "0.0.3"
+}
