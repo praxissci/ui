@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+        "@rhi-ui/base-element": "0.0.1"
+    },
+    "description": "Standard Praxis authentication view.",
+    "keywords": [
+        "custom element",
+        "authentication",
+        "view"
+    ],
+    "name": "@praxis-ui/auth",
+    "version": "0.0.1"
+}
