@@ -20,7 +20,7 @@ const fs = require('fs-extra');
 const COMPONENTS = fs.readdirSync('./src');
 
 const filter_js = (src) => {
-  return fs.lstatSync(src).isDirectory() || src.endsWith('.js');
+  return fs.lstatSync(src).isDirectory() || src.endsWith('.js') || src.endsWith('.js.map');
 }
 
 const filter_README = (src) => {
@@ -34,7 +34,8 @@ const copyAllREADME = () => {
 }
 
 const copyPolyfill = () => {
-  return fs.copy('./node_modules/@webcomponents/webcomponentsjs', './demo/scripts/webcomponentsjs', { filter: filter_js })
+  // return fs.copy('./node_modules/@webcomponents/webcomponentsjs', './demo/scripts/webcomponentsjs', { filter: filter_js })
+  return fs.copy('./node_modules/@webcomponents/webcomponentsjs', './demo/scripts/webcomponentsjs');
 }
 
 /**
