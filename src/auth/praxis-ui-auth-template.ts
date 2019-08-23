@@ -27,10 +27,7 @@ export const template: string =
             height: 600px;
         }
 
-        :host([invalid-email]) .form-field.email .error-container label {
-            display: inline-block;
-        }
-
+        :host([invalid-email]) .form-field.email .error-container label,
         :host([invalid-password]) .form-field.password .error-container label {
             display: inline-block;
         }
@@ -66,6 +63,10 @@ export const template: string =
 
         .card .content .error-container {
             color: var(--color-deep-orange, #DD2C00);
+        }
+
+        .card .content .error-container.request {
+            margin-bottom: 16px;
         }
 
         .card .content .form-field .error-container {
@@ -138,7 +139,8 @@ export const template: string =
                 position: relative;
             }
 
-            :host:before, :host:after {
+            :host:before,
+            :host:after {
                 -moz-box-flex: 1;
                 -ms-box-flex: 1;
                 -webkit-box-flex: 1;
@@ -171,13 +173,23 @@ export const template: string =
                 padding: 48px 40px 36px;
             }
         }
+
+        /*
+         * The :host notation with CSS variables did not work on MS Edge.
+         * The code below has been added so that the component works on Edge just as
+         * on FireFox, Safari, and Chrome,
+         */
+        [invalid-email] .form-field.email .error-container label,
+        [invalid-password] .form-field.password .error-container label {
+            display: inline-block;
+        }
     </style>
     <!-- shadow DOM for your element -->
     <div class="card">
         <div class="content">
             <praxis-ui-logo></praxis-ui-logo>
             <div class="title font-title" bind-to="login-title"></div>
-            <div class="error-container" bind-to="requestError"></div>
+            <div class="error-container request" bind-to="request-error"></div>
             <div class="form-field email">
                 <div class="form-label"><label for="email" bind-to="login-email"></label></div>
                 <input bind-to="email"

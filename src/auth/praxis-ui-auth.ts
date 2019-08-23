@@ -82,6 +82,8 @@ export class PraxisUiAuth extends RhiUiBaseElement {
         if (loginButton) {
             loginButton.addEventListener('click', (e: MouseEvent) => this.onLoginTapped(e));
         }
+
+        window.addEventListener('keypress', (e: KeyboardEvent) => this.onKeyPressed(e));
     }
 
     public getTemplate(): string {
@@ -101,7 +103,7 @@ export class PraxisUiAuth extends RhiUiBaseElement {
         }
     }
 
-    private onLoginTapped(e: MouseEvent): boolean {
+    private handleLoginRequest(): void {
         const email: HTMLInputElement = this.uiBindings.email as HTMLInputElement;
         const password: HTMLInputElement = this.uiBindings.password as HTMLInputElement;
 
@@ -110,8 +112,8 @@ export class PraxisUiAuth extends RhiUiBaseElement {
         this.manageBlankAttribute(emailIsValid, 'invalid-email');
         this.manageBlankAttribute(passwordIsValid, 'invalid-password');
 
-        if (emailIsValid || passwordIsValid) {
-            return true;
+        if (!emailIsValid || !passwordIsValid) {
+            return;
         }
 
         this.dispatchEvent(
@@ -125,8 +127,6 @@ export class PraxisUiAuth extends RhiUiBaseElement {
                 },
             ),
         );
-
-        return true;
     }
 
     private manageBlankAttribute(remove: boolean, attributeName: string): void {
@@ -140,6 +140,19 @@ export class PraxisUiAuth extends RhiUiBaseElement {
 
     private onCreateTapped(e: MouseEvent): boolean {
         this.dispatchEvent(new CustomEvent('create-requested'));
+
+        return true;
+    }
+
+    private onLoginTapped(e: MouseEvent): boolean {
+        this.handleLoginRequest();
+        return true;
+    }
+
+    private onKeyPressed(e: KeyboardEvent): boolean {
+        if (e.keyCode === 13 || e.which === 13) {
+            this.handleLoginRequest();
+        }
 
         return true;
     }

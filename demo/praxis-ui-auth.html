@@ -61,22 +61,34 @@
     </div>
     <script>
         'use strict';
-        
-        const auth = document.getElementById('auth');
-        const auth2 = document.getElementById('auth2');
-        auth.addEventListener('login-requested', login_requested);
-        auth.addEventListener('create-requested', create_requested);
-        auth2.addEventListener('login-requested', login_requested);
-        auth2.addEventListener('create-requested', create_requested);
+
+        window.addEventListener('WebComponentsReady', () => {
+            initialize();
+        });
+
+        function initialize() {
+            const auth = document.getElementById('auth');
+            const auth2 = document.getElementById('auth2');
+            auth.addEventListener('login-requested', login_requested);
+            auth.addEventListener('create-requested', create_requested);
+            auth2.addEventListener('login-requested', login_requested);
+            auth2.addEventListener('create-requested', create_requested);
+        }
     
         function login_requested(e) {
             console.log(e.detail.username + '::' + e.detail.password);
-            e.target.requestError = 'Login requested for ' + e.detail.username + '::' + e.detail.password;
+            e.target.setAttribute(
+                'request-error',
+                'Login requested for ' + e.detail.username + '::' + e.detail.password
+            );
         }
     
         function create_requested(e) {
-            e.target.requestError = 'Create requested';
             console.log(e);
+            e.target.setAttribute(
+                'request-error',
+                'Create requested'
+            );
         }
     </script>
 </body>
