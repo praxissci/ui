@@ -11,7 +11,7 @@
     "devDependencies": {
         "concurrently": "^4.1.0",
         "fs-extra": "^7.0.1",
-        "http-server": "^0.11.1",
+        "http-server": "^14.1.1",
         "rimraf": "^2.6.2",
         "rollup": "^0.68.0",
         "rollup-plugin-node-resolve": "4.0.0",
